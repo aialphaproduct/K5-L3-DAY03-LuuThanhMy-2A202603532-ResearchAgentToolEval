@@ -15,7 +15,7 @@
   "dataset_role": "base",
   "description": "Core eval cho research agent: routing đúng tool + đúng args, hỏi lại khi thiếu (ask_user), xác nhận trước khi gửi, và xử lý câu ngoài phạm vi / không cần tool. Chấm trên tool_calls + args (subset). KHÔNG sửa file này — chỉ thêm case vào eval_group.json.",
   "generated_at": "2026-11-10T17:36:28",
-  "summary": {
+  "summary": { 
     "total_cases": 20,
     "measured_cases": 20,
     "provider_error_cases": 0,
