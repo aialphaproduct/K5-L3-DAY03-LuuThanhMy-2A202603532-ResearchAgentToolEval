@@ -12,248 +12,6 @@
   ],
   "cases": [
     {
-      "id": "G01_missing_article_link",
-      "phase": "B",
-      "query": "Mở bài báo mình vừa nhắc đến và trích các số liệu chính. Mình chưa gửi đường dẫn.",
-      "failure_type": "missing_info",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "clarify",
-            "args": {
-              "response_type": "text"
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Hỏi xin URL khi chưa có link để đọc bài cụ thể."
-      }
-    },
-    {
-      "id": "G02_news_filters",
-      "phase": "B",
-      "query": "Tìm tối đa 3 tin trong tháng này trên web với từ khóa chính xác là pin thể rắn.",
-      "failure_type": "wrong_arg_value",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "lookup",
-            "args": {
-              "query": "pin thể rắn",
-              "topic": "news",
-              "timeframe": "month",
-              "max_results": 3
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Tách từ khóa khỏi loại tìm kiếm, khoảng thời gian và số lượng kết quả."
-      }
-    },
-    {
-      "id": "G03_handle_normalization",
-      "phase": "B",
-      "query": "Lấy 2 bài đăng mới nhất trực tiếp từ tài khoản @NASA trên X.",
-      "failure_type": "wrong_arg_value",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "timeline",
-            "args": {
-              "screenname": "NASA",
-              "limit": 2
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Truy xuất bài từ một tài khoản, bỏ ký tự @ và giữ giới hạn 2."
-      }
-    },
-    {
-      "id": "G04_search_latest_posts",
-      "phase": "B",
-      "query": "Tìm 4 bài đăng mới nhất trên X có từ khóa chính xác là robotics, từ bất kỳ tài khoản nào.",
-      "failure_type": "wrong_tool",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "social_search",
-            "args": {
-              "query": "robotics",
-              "search_type": "Latest",
-              "limit": 4
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Tìm theo từ khóa trên X và sắp xếp theo bài mới nhất."
-      }
-    },
-    {
-      "id": "G05_confirm_delivery",
-      "phase": "B",
-      "query": "Mình muốn đăng lên Telegram nội dung sau: Bản tin demo đã sẵn sàng. Hãy hỏi mình xác nhận trước.",
-      "failure_type": "wrong_boundary",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "clarify",
-            "args": {
-              "response_type": "yes_no"
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Yêu cầu xác nhận trước khi đăng dù nội dung đã đầy đủ."
-      }
-    },
-    {
-      "id": "G06_replace_article_url",
-      "phase": "B",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Đọc trang https://example.com/ giúp mình."
-        },
-        {
-          "role": "user",
-          "content": "Mình gửi nhầm link. Chỉ đọc trang https://example.org/."
-        }
-      ],
-      "failure_type": "wrong_arg_value",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "fetch",
-            "args": {
-              "url": "https://example.org/"
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Dùng URL thay thế ở lượt cuối và chỉ gọi fetch một lần."
-      }
-    },
-    {
-      "id": "G07_change_news_timeframe",
-      "phase": "B",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Tìm tối đa 2 tin trên web trong hôm nay, với từ khóa chính xác là năng lượng gió."
-        },
-        {
-          "role": "user",
-          "content": "Đổi khoảng thời gian thành một tuần qua, giữ nguyên các yêu cầu còn lại."
-        }
-      ],
-      "failure_type": "wrong_arg_value",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "lookup",
-            "args": {
-              "query": "năng lượng gió",
-              "topic": "news",
-              "timeframe": "week",
-              "max_results": 2
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Cập nhật thời gian và giữ từ khóa, loại tin tức, số lượng từ lượt trước."
-      }
-    },
-    {
-      "id": "G08_cancel_delivery",
-      "phase": "B",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Chuẩn bị gửi câu Bản tin demo đã sẵn sàng lên Telegram."
-        },
-        {
-          "role": "assistant",
-          "content": "Bạn xác nhận gửi nội dung này lên Telegram chứ?"
-        },
-        {
-          "role": "user",
-          "content": "Không, hủy yêu cầu gửi và xác nhận đã hủy giúp mình."
-        }
-      ],
-      "failure_type": "wrong_boundary",
-      "expect": {
-        "no_tool": true
-      },
-      "metadata": {
-        "what_it_tests": "Tôn trọng yêu cầu hủy ở lượt cuối, không gọi công cụ sau khi người dùng từ chối."
-      }
-    },
-    {
-      "id": "G09_switch_to_account",
-      "phase": "B",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Tìm 3 bài đăng mới nhất trên X theo từ khóa ESA."
-        },
-        {
-          "role": "user",
-          "content": "Chuyển sang lấy 3 bài mới nhất trực tiếp từ tài khoản @esa, bỏ tìm theo từ khóa."
-        }
-      ],
-      "failure_type": "wrong_tool",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "timeline",
-            "args": {
-              "screenname": "esa",
-              "limit": 3
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Chuyển từ tìm theo từ khóa sang lấy bài từ tài khoản được chỉ định."
-      }
-    },
-    {
-      "id": "G10_missing_comparison_url",
-      "phase": "B",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Mình muốn so sánh nội dung hai bài báo, nhưng hãy đợi đủ hai URL rồi mới đọc."
-        },
-        {
-          "role": "user",
-          "content": "Link thứ nhất là https://example.org/. Mình chưa tìm được link thứ hai."
-        }
-      ],
-      "failure_type": "missing_info",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "clarify",
-            "args": {
-              "response_type": "text"
-            }
-          }
-        ]
-      },
-      "metadata": {
-        "what_it_tests": "Hỏi xin URL còn thiếu và chờ đủ dữ liệu theo yêu cầu trước khi gọi fetch."
-      }
-    },
-    {
       "id": "LTM_G01_calc_routing",
       "phase": "B",
       "suite": "group",
@@ -336,150 +94,50 @@
       }
     },
     {
-      "id": "LTM_G05_algebra_out_of_scope",
+      "id": "G12_wikipedia_search_vi",
       "phase": "B",
       "suite": "group",
-      "query": "Giải phương trình x^2 - 5x + 6 = 0 giúp mình với.",
-      "failure_type": "out_of_scope",
-      "expect": {
-        "no_tool": true,
-        "behavior": "refuse"
-      },
-      "metadata": {
-        "skill": "boundary_calc_vs_algebra",
-        "difficulty": "hard",
-        "what_it_tests": "Đại số ký hiệu (giải phương trình chữ) KHÔNG phải số học → KHÔNG được lạm dụng calc, phải từ chối/định hướng."
-      }
-    },
-    {
-      "id": "LTM_G06_calc_multiturn_fill",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Tính hộ mình tổng chi phí nhé"
-        },
-        {
-          "role": "user",
-          "content": "Là 3 món: 120, 80 và 45 (nghìn)"
-        },
-        {
-          "role": "user",
-          "content": "Cộng cả ba số lại là ra"
-        }
-      ],
+      "query": "Tìm danh sách tối đa 3 bài trên Wikipedia tiếng Việt với từ khóa chính xác là học tăng cường. Cho mình tiêu đề và link của mỗi kết quả.",
       "failure_type": "wrong_tool",
       "expect": {
         "tool_calls": [
           {
-            "name": "calc",
-            "args": {}
-          }
-        ]
-      },
-      "metadata": {
-        "skill": "multiturn_calc_fill",
-        "difficulty": "medium",
-        "what_it_tests": "3 turns: gom số từ lượt trước, lượt cuối yêu cầu cộng → calc (không hỏi lại nữa vì đã đủ số)."
-      }
-    },
-    {
-      "id": "LTM_G07_wiki_multiturn_correction",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {
-          "role": "user",
-          "content": "RAG là gì thế?"
-        },
-        {
-          "role": "user",
-          "content": "À nhầm, ý mình là LoRA"
-        },
-        {
-          "role": "user",
-          "content": "Giải thích ngắn gọn LoRA thôi"
-        }
-      ],
-      "failure_type": "wrong_arg_value",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "wiki",
-            "args": {}
-          }
-        ]
-      },
-      "metadata": {
-        "skill": "multiturn_wiki_correction",
-        "difficulty": "hard",
-        "what_it_tests": "3 turns: sửa chủ đề RAG→LoRA, lượt cuối vẫn là 'X là gì' → wiki về LoRA."
-      }
-    },
-    {
-      "id": "LTM_G08_summarize_not_send_boundary",
-      "phase": "B",
-      "suite": "group",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Tổng hợp tin AI hôm nay rồi gửi lên Telegram luôn giúp mình"
-        },
-        {
-          "role": "user",
-          "content": "Khoan, chưa cần gửi, chỉ tổng hợp thôi"
-        }
-      ],
-      "failure_type": "unnecessary_tool",
-      "expect": {
-        "tool_calls": [
-          {
-            "name": "lookup",
+            "name": "wiki_search",
             "args": {
-              "topic": "news",
-              "timeframe": "day"
+              "query": "học tăng cường",
+              "language": "vi",
+              "max_results": 3
             }
           }
         ]
       },
       "metadata": {
-        "skill": "multiturn_drop_send",
-        "difficulty": "hard",
-        "what_it_tests": "2 turns: người dùng rút lại yêu cầu gửi → chỉ lookup tin, KHÔNG gọi send/clarify-để-gửi."
+        "what_it_tests": "Chọn wiki_search cho danh sách bài Wikipedia tiếng Việt thay vì wiki để lấy tóm tắt một trang."
       }
     },
     {
-      "id": "LTM_G09_lookup_carryover_timeframe",
+      "id": "G08_cancel_delivery",
       "phase": "B",
-      "suite": "group",
       "turns": [
         {
           "role": "user",
-          "content": "Tin crypto trong tuần này có gì?"
+          "content": "Chuẩn bị gửi câu Bản tin demo đã sẵn sàng lên Telegram."
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn xác nhận gửi nội dung này lên Telegram chứ?"
         },
         {
           "role": "user",
-          "content": "Chỉ Bitcoin thôi, vẫn là tuần này nhé"
+          "content": "Không, hủy yêu cầu gửi và xác nhận đã hủy giúp mình."
         }
       ],
-      "failure_type": "wrong_arg_value",
+      "failure_type": "wrong_boundary",
       "expect": {
-        "tool_calls": [
-          {
-            "name": "lookup",
-            "args": {
-              "query": "Bitcoin",
-              "topic": "news",
-              "timeframe": "week"
-            }
-          }
-        ]
+        "no_tool": true
       },
       "metadata": {
-        "skill": "multiturn_carryover_timeframe",
-        "difficulty": "hard",
-        "what_it_tests": "2 turns: carry timeframe=week + topic=news từ lượt 1, thu hẹp query=Bitcoin ở lượt 2."
+        "what_it_tests": "Tôn trọng yêu cầu hủy ở lượt cuối, không gọi công cụ sau khi người dùng từ chối."
       }
     },
     {
@@ -514,47 +172,61 @@
       }
     },
     {
-      "id": "G11_hn_ask_posts",
+      "id": "G11_hn_refine_to_ask",
       "phase": "B",
       "suite": "group",
-      "query": "Tìm tối đa 3 bài Ask HN trên Hacker News với từ khóa chính xác là local LLM.",
       "failure_type": "wrong_tool",
       "expect": {
         "tool_calls": [
-          {"name": "hn_search", "args": {"query": "local LLM", "tag": "ask_hn", "max_results": 3}}
+          {
+            "name": "hn_search",
+            "args": {
+              "query": "local LLM",
+              "tag": "ask_hn",
+              "max_results": 3
+            }
+          }
         ]
       },
       "metadata": {
-        "what_it_tests": "Chọn công cụ Hacker News và truyền đúng từ khóa, loại bài Ask HN và số lượng."
-      }
-    },
-    {
-      "id": "G12_wikipedia_search_vi",
-      "phase": "B",
-      "suite": "group",
-      "query": "Tìm danh sách tối đa 3 bài trên Wikipedia tiếng Việt với từ khóa chính xác là học tăng cường. Cho mình tiêu đề và link của mỗi kết quả.",
-      "failure_type": "wrong_tool",
-      "expect": {
-        "tool_calls": [
-          {"name": "wiki_search", "args": {"query": "học tăng cường", "language": "vi", "max_results": 3}}
-        ]
+        "what_it_tests": "Giữ từ khóa và số lượng từ lượt trước, đổi bộ lọc sang Ask HN."
       },
-      "metadata": {
-        "what_it_tests": "Chọn wiki_search cho danh sách bài Wikipedia tiếng Việt thay vì wiki để lấy tóm tắt một trang."
-      }
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tối đa 3 bài trên Hacker News với từ khóa chính xác là local LLM."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy bài Ask HN, giữ nguyên từ khóa và số lượng nhé."
+        }
+      ]
     },
     {
       "id": "G13_repo_sort_correction",
       "phase": "B",
       "suite": "group",
       "turns": [
-        {"role": "user", "content": "Tìm tối đa 4 repository trên GitHub với từ khóa chính xác là agent evaluation, ưu tiên repo nhiều sao."},
-        {"role": "user", "content": "Đổi sang ưu tiên repo được cập nhật gần đây nhất, giữ nguyên từ khóa và số lượng."}
+        {
+          "role": "user",
+          "content": "Tìm tối đa 4 repository trên GitHub với từ khóa chính xác là agent evaluation, ưu tiên repo nhiều sao."
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang ưu tiên repo được cập nhật gần đây nhất, giữ nguyên từ khóa và số lượng."
+        }
       ],
       "failure_type": "wrong_arg_value",
       "expect": {
         "tool_calls": [
-          {"name": "repo_search", "args": {"query": "agent evaluation", "sort": "updated", "max_results": 4}}
+          {
+            "name": "repo_search",
+            "args": {
+              "query": "agent evaluation",
+              "sort": "updated",
+              "max_results": 4
+            }
+          }
         ]
       },
       "metadata": {
@@ -566,13 +238,25 @@
       "phase": "B",
       "suite": "group",
       "turns": [
-        {"role": "user", "content": "Cho mình xem lại những ghi chú đã lưu trong sổ tay của agent."},
-        {"role": "user", "content": "Chỉ lấy 2 ghi chú gần nhất thôi nhé."}
+        {
+          "role": "user",
+          "content": "Cho mình xem lại những ghi chú đã lưu trong sổ tay của agent."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy 2 ghi chú gần nhất thôi nhé."
+        }
       ],
       "failure_type": "wrong_tool",
       "expect": {
         "tool_calls": [
-          {"name": "notes", "args": {"action": "list", "limit": 2}}
+          {
+            "name": "notes",
+            "args": {
+              "action": "list",
+              "limit": 2
+            }
+          }
         ]
       },
       "metadata": {
