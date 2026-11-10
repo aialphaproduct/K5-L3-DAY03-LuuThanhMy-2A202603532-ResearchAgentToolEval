@@ -512,6 +512,72 @@
         "difficulty": "medium",
         "what_it_tests": "2 turns: đã có limit=5 nhưng VẪN thiếu handle → clarify xin tên tài khoản, không đoán bừa."
       }
+    },
+    {
+      "id": "G11_hn_ask_posts",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm tối đa 3 bài Ask HN trên Hacker News với từ khóa chính xác là local LLM.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {"name": "hn_search", "args": {"query": "local LLM", "tag": "ask_hn", "max_results": 3}}
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Chọn công cụ Hacker News và truyền đúng từ khóa, loại bài Ask HN và số lượng."
+      }
+    },
+    {
+      "id": "G12_wikipedia_search_vi",
+      "phase": "B",
+      "suite": "group",
+      "query": "Tìm danh sách tối đa 3 bài trên Wikipedia tiếng Việt với từ khóa chính xác là học tăng cường. Cho mình tiêu đề và link của mỗi kết quả.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {"name": "wiki_search", "args": {"query": "học tăng cường", "language": "vi", "max_results": 3}}
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Chọn wiki_search cho danh sách bài Wikipedia tiếng Việt thay vì wiki để lấy tóm tắt một trang."
+      }
+    },
+    {
+      "id": "G13_repo_sort_correction",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm tối đa 4 repository trên GitHub với từ khóa chính xác là agent evaluation, ưu tiên repo nhiều sao."},
+        {"role": "user", "content": "Đổi sang ưu tiên repo được cập nhật gần đây nhất, giữ nguyên từ khóa và số lượng."}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {"name": "repo_search", "args": {"query": "agent evaluation", "sort": "updated", "max_results": 4}}
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Giữ GitHub, từ khóa và số lượng từ lượt trước, đồng thời đổi cách sắp xếp sang updated."
+      }
+    },
+    {
+      "id": "G14_notes_list_limit",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Cho mình xem lại những ghi chú đã lưu trong sổ tay của agent."},
+        {"role": "user", "content": "Chỉ lấy 2 ghi chú gần nhất thôi nhé."}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {"name": "notes", "args": {"action": "list", "limit": 2}}
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Giữ ý định xem ghi chú ở lượt trước và gọi notes với thao tác list, giới hạn 2."
+      }
     }
   ]
 }
