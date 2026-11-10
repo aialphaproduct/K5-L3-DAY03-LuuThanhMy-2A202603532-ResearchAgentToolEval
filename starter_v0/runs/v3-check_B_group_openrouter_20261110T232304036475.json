@@ -1,0 +1,708 @@
+{
+  "run_id": "v3-check_B_group_openrouter_20261110T232304036475",
+  "version": "v3-check",
+  "artifact_version": "v3-check+pc6fbee5d5031+t8d9098dbc911",
+  "prompt_hash": "c6fbee5d5031bbb340faa462a5c962d75f6aa3066f9685dd3e268706a890ed29",
+  "tools_hash": "8d9098dbc911a758bef5382f2dd189064aae0959074ea73c80695eb5ca0f592c",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "starter_v0\\artifacts\\system_prompt_v3.md",
+  "tools": "E:\\22022147_NguyenTuanQuang\\AI_inaction\\K5-L3-DAY03-LuuThanhMy-2A202603532-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "starter_v0\\data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T23:23:04",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 9,
+    "case_accuracy": 0.9,
+    "tool_routing_accuracy": 0.9,
+    "argument_accuracy": 0.9,
+    "multiturn_accuracy": 0.8,
+    "failure_counts": {
+      "missing_info": 1
+    },
+    "observed_mismatch_counts": {
+      "missing_tool_call": 1
+    }
+  },
+  "results": [
+    {
+      "id": "LTM_G01_calc_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_calc",
+        "difficulty": "easy",
+        "what_it_tests": "Phép tính số học rõ ràng → gọi calc, không phải lookup/web."
+      },
+      "input": "Tính giúp mình 125 * 48 + 90 bằng bao nhiêu?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "calc",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "calc",
+            "args": {
+              "expression": "125*48+90"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "calc",
+          "args": {
+            "expression": "125*48+90"
+          },
+          "result": {
+            "tool": "calculate",
+            "expression": "125*48+90",
+            "result": 6090
+          }
+        }
+      ]
+    },
+    {
+      "id": "LTM_G02_wiki_concept_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_wiki_concept",
+        "difficulty": "medium",
+        "what_it_tests": "Kiến thức bách khoa ổn định ('X là gì') → wiki, không phải lookup topic=news."
+      },
+      "input": "Transformer trong học máy là gì? Giải thích ngắn gọn giúp mình.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wiki",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wiki",
+            "args": {
+              "title": "Transformer (machine learning)",
+              "sentences": 3
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wiki",
+          "args": {
+            "title": "Transformer (machine learning)",
+            "sentences": 3
+          },
+          "result": {
+            "tool": "wiki_summary",
+            "title": "Transformer (deep learning)",
+            "summary": "In deep learning, the transformer is a family of artificial neural network architectures based on the multi-head attention mechanism, in which input data such as text, images, or audio is converted to a sequence of numerical representations called tokens, and each token is converted into a vector through an embedding layer. At each layer, each token is then contextualized within the scope of the context window with other (unmasked) tokens via a parallel multi-head attention mechanism, allowing the signal for key tokens to be amplified and less important tokens to be diminished. Because self-attention alone is permutation-invariant, transformers inject positional information, typically through positional encodings or learned positional embeddings, so token order can affect the output.",
+            "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
+            "source": "en.wikipedia.org"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LTM_G03_define_word_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_define_word",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi nghĩa một TỪ đơn → define với word đúng, không dùng wiki/lookup."
+      },
+      "input": "Từ 'serendipity' nghĩa là gì vậy?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "define",
+            "args": {
+              "word": "serendipity"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "define",
+            "args": {
+              "word": "serendipity"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "define",
+          "args": {
+            "word": "serendipity"
+          },
+          "result": {
+            "tool": "define_word",
+            "word": "serendipity",
+            "phonetic": "/ˌsɛ.ɹən.ˈdɪ.pɪ.ti/",
+            "meanings": [
+              {
+                "part_of_speech": "noun",
+                "definitions": [
+                  "A combination of events which have come together by chance to make a surprisingly good or wonderful outcome.",
+                  "An unsought, unintended, and/or unexpected, but fortunate, discovery and/or learning experience that happens by accident."
+                ]
+              }
+            ],
+            "source": "dictionaryapi.dev"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LTM_G04_datetime_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_datetime",
+        "difficulty": "easy",
+        "what_it_tests": "Hỏi thời gian hiện tại → datetime, không phải lookup."
+      },
+      "input": "Bây giờ ở Hà Nội là mấy giờ rồi?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "datetime",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "datetime",
+            "args": {
+              "timezone": "Asia/Ho_Chi_Minh"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "datetime",
+          "args": {
+            "timezone": "Asia/Ho_Chi_Minh"
+          },
+          "result": {
+            "tool": "current_datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "datetime": "2026-11-10T23:22:52.470517+07:00",
+            "date": "2026-11-10",
+            "time": "23:22:52",
+            "weekday": "Tuesday"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G12_wikipedia_search_vi",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Chọn wiki_search cho danh sách bài Wikipedia tiếng Việt thay vì wiki để lấy tóm tắt một trang."
+      },
+      "input": "Tìm danh sách tối đa 3 bài trên Wikipedia tiếng Việt với từ khóa chính xác là học tăng cường. Cho mình tiêu đề và link của mỗi kết quả.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wiki_search",
+            "args": {
+              "query": "học tăng cường",
+              "language": "vi",
+              "max_results": 3
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wiki_search",
+            "args": {
+              "query": "học tăng cường",
+              "language": "vi",
+              "max_results": 3
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wiki_search",
+          "args": {
+            "query": "học tăng cường",
+            "language": "vi",
+            "max_results": 3
+          },
+          "result": {
+            "tool": "wiki_lookup",
+            "query": "học tăng cường",
+            "language": "vi",
+            "items": [
+              {
+                "title": "Học tăng cường",
+                "url": "https://vi.wikipedia.org/wiki/H%E1%BB%8Dc_t%C4%83ng_c%C6%B0%E1%BB%9Dng",
+                "source": "vi.wikipedia.org",
+                "summary": "Trong ngành khoa học máy tính, học tăng cường (tiếng Anh: reinforcement learning) là một lĩnh vực con của học máy, nghiên cứu cách thức một agent trong"
+              },
+              {
+                "title": "Q-learning (học tăng cường)",
+                "url": "https://vi.wikipedia.org/wiki/Q-learning_%28h%E1%BB%8Dc_t%C4%83ng_c%C6%B0%E1%BB%9Dng%29",
+                "source": "vi.wikipedia.org",
+                "summary": "Q -learning là một thuật toán học tăng cường không mô hình. Mục tiêu của Q-learning là học một chính sách, chính sách cho biết máy sẽ thực hiện hành động"
+              },
+              {
+                "title": "Không mô hình (học tăng cường)",
+                "url": "https://vi.wikipedia.org/wiki/Kh%C3%B4ng_m%C3%B4_h%C3%ACnh_%28h%E1%BB%8Dc_t%C4%83ng_c%C6%B0%E1%BB%9Dng%29",
+                "source": "vi.wikipedia.org",
+                "summary": "Trong học tăng cường (RL), một thuật toán không mô hình (trái ngược với một thuật toán dựa trên mô hình) là một thuật toán mà không sử dụng các phân bố"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_cancel_delivery",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Tôn trọng yêu cầu hủy ở lượt cuối, không gọi công cụ sau khi người dùng từ chối."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Chuẩn bị gửi câu Bản tin demo đã sẵn sàng lên Telegram."
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn xác nhận gửi nội dung này lên Telegram chứ?"
+        },
+        {
+          "role": "user",
+          "content": "Không, hủy yêu cầu gửi và xác nhận đã hủy giúp mình."
+        }
+      ],
+      "expect": {
+        "no_tool": true
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Yêu cầu gửi đã bị hủy. Nếu bạn cần hỗ trợ gì khác, hãy cho tôi biết!",
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "LTM_G10_still_missing_handle_clarify",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_still_missing_handle",
+        "difficulty": "medium",
+        "what_it_tests": "2 turns: đã có limit=5 nhưng VẪN thiếu handle → clarify xin tên tài khoản, không đoán bừa."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Lấy tweet mới nhất giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Ừ, 5 cái nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call clarify",
+          "extra tool call timeline"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "error": "RuntimeError",
+            "message": "Missing RAPIDAPI_KEY env var"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G11_hn_refine_to_ask",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Giữ từ khóa và số lượng từ lượt trước, đổi bộ lọc sang Ask HN."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tối đa 3 bài trên Hacker News với từ khóa chính xác là local LLM."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy bài Ask HN, giữ nguyên từ khóa và số lượng nhé."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "hn_search",
+            "args": {
+              "query": "local LLM",
+              "tag": "ask_hn",
+              "max_results": 3
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "hn_search",
+            "args": {
+              "query": "local LLM",
+              "tag": "ask_hn",
+              "max_results": 3
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "hn_search",
+          "args": {
+            "query": "local LLM",
+            "tag": "ask_hn",
+            "max_results": 3
+          },
+          "result": {
+            "tool": "hacker_news_search",
+            "query": "local LLM",
+            "tag": "ask_hn",
+            "items": [
+              {
+                "title": "Ask HN: Cheapest way to run local LLMs?",
+                "url": "https://news.ycombinator.com/item?id=38425761",
+                "source": "news.ycombinator.com",
+                "summary": "Not super knowledgeable about all the different specs of the different Orange PI and Rasberry PI models. I&#x27;m looking for something relatively cheap that can connect to WiFi and USB. I want to be able to run at least 13b models at a a decent tok &#x2F; s.<p>Also open to other solutions. I have a Mac M1 (8gb RAM) and upgrading the computer itself would be cost prohibitive for me.",
+                "points": 124,
+                "type": "story"
+              },
+              {
+                "title": "Ask HN: What's Your Useful Local LLM Stack?",
+                "url": "https://news.ycombinator.com/item?id=44572043",
+                "source": "news.ycombinator.com",
+                "summary": "What I’m asking HN:<p>What does your actually useful local LLM stack look like?<p>I’m looking for something that provides you with real value — not just a sexy demo.<p>---<p>After a recent internet outage, I realized I need a local LLM setup as a backup — not just for experimentation and fun.<p>My daily (remote) LLM stack:<p><pre><code>  - Claude Max ($100&#x2F;mo): My go-to for pair programmin...",
+                "points": 91,
+                "type": "story"
+              },
+              {
+                "title": "Ask HN: Anyone Using a Mac Studio for Local AI/LLM?",
+                "url": "https://news.ycombinator.com/item?id=46907001",
+                "source": "news.ycombinator.com",
+                "summary": "Curious to know your experience running local LLM&#x27;s with a well spec&#x27;ed out M3 Ultra or M4 Pro Mac Studio. I don&#x27;t see a lot of discussion on the Mac Studio for Local LLMs but it seems like you could put big models in memory with the shared VRAM. I assume that the token generation would be slow, but you might get higher quality results because you can put larger models in memory.",
+                "points": 57,
+                "type": "story"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G13_repo_sort_correction",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Giữ GitHub, từ khóa và số lượng từ lượt trước, đồng thời đổi cách sắp xếp sang updated."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm tối đa 4 repository trên GitHub với từ khóa chính xác là agent evaluation, ưu tiên repo nhiều sao."
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang ưu tiên repo được cập nhật gần đây nhất, giữ nguyên từ khóa và số lượng."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "repo_search",
+            "args": {
+              "query": "agent evaluation",
+              "sort": "updated",
+              "max_results": 4
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "repo_search",
+            "args": {
+              "query": "agent evaluation",
+              "sort": "updated",
+              "max_results": 4
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "repo_search",
+          "args": {
+            "query": "agent evaluation",
+            "sort": "updated",
+            "max_results": 4
+          },
+          "result": {
+            "tool": "repo_search",
+            "query": "agent evaluation",
+            "sort": "updated",
+            "total_count": 29467,
+            "items": [
+              {
+                "title": "backblaze-labs/awesome-agent-infrastructure",
+                "url": "https://github.com/backblaze-labs/awesome-agent-infrastructure",
+                "source": "github.com",
+                "summary": "A curated list of AI agent infrastructure: memory stores, vector databases, execution sandboxes, MCP servers, tool registries, observability, and evaluation tools for building and running autonomous agents.",
+                "stars": 12,
+                "language": null
+              },
+              {
+                "title": "trycua/cua",
+                "url": "https://github.com/trycua/cua",
+                "source": "github.com",
+                "summary": "Scale computer-use 2.0 with open-source drivers, cross-OS sandboxes, and benchmarks for training, evaluation, and data generation.",
+                "stars": 32125,
+                "language": "Rust"
+              },
+              {
+                "title": "mojorisin/maintenance-copilot",
+                "url": "https://github.com/mojorisin/maintenance-copilot",
+                "source": "github.com",
+                "summary": "Personal learning project: a tool-using AI agent with retrieval and evaluation, built on public and synthetic data.",
+                "stars": 1,
+                "language": "Python"
+              },
+              {
+                "title": "NVIDIA-NeMo/Gym",
+                "url": "https://github.com/NVIDIA-NeMo/Gym",
+                "source": "github.com",
+                "summary": "Evaluate and improve models and agents using environments",
+                "stars": 1328,
+                "language": "Python"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G14_notes_list_limit",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Giữ ý định xem ghi chú ở lượt trước và gọi notes với thao tác list, giới hạn 2."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Cho mình xem lại những ghi chú đã lưu trong sổ tay của agent."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ lấy 2 ghi chú gần nhất thôi nhé."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "notes",
+            "args": {
+              "action": "list",
+              "limit": 2
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "notes",
+            "args": {
+              "action": "list",
+              "limit": 2
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "notes",
+          "args": {
+            "action": "list",
+            "limit": 2
+          },
+          "result": {
+            "tool": "notes",
+            "action": "list",
+            "items": [],
+            "note_count": 0
+          }
+        }
+      ]
+    }
+  ]
+}

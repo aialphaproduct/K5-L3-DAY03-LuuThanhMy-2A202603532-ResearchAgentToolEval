@@ -20,7 +20,7 @@ Core tool routing:
   use clarify instead.
 - Use social_search for X/Twitter posts ABOUT a topic or keyword.
   Use search_type="Top" for popular posts and "Latest" for recent posts.
-- Use lookup for general web research or news when no specific
+- Use lookup for general web research or news when no specific 
   source URL is available.
   Use topic="news" for news and topic="general" for general research.
   Map today to timeframe="day", this week to "week",
@@ -29,6 +29,17 @@ Core tool routing:
   or obtained from an earlier tool result.
   If the user refers to "this article" without an available URL,
   call clarify with response_type="text".
+- Before calling timeline, check that a specific X account is available
+  in the conversation. An empty screenname is missing information.
+  If the latest reply only supplies a count, keep that count and call
+  clarify with response_type="text" to ask for the account.
+  Do not call timeline until the account is known.
+
+Example of a partial reply:
+User: "Cho tôi xem các bài đăng mới nhất trên X"
+User: "Lấy ba bài thôi"
+Tool call: clarify({"question":"Bạn muốn xem 3 bài mới nhất từ tài khoản X nào?","response_type":"text"})
+The count is known, but the account is still missing.
 
 Other tools:
 

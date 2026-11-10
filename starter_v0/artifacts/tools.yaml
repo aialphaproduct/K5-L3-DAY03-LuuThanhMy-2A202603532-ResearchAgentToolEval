@@ -32,7 +32,7 @@ tools:
     parameters:
       type: object
       properties:
-        screenname: {type: string, default: "", description: "Handle X/Twitter, ví dụ sama hoặc elonmusk. Không có dấu @. Không chắc handle thì dùng clarify thay vì đoán."}
+        screenname: {type: string, minLength: 1, description: "Handle X/Twitter đã biết, ví dụ sama hoặc elonmusk. Bỏ dấu @. Thiếu handle thì dùng clarify với response_type=text, kể cả khi đã biết số bài."}
         limit: {type: integer, default: 5, description: "Số bài đăng, trích đúng từ lời user (\"10 tweet\" -> 10)"}
       required: [screenname]
 

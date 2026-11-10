@@ -23,7 +23,9 @@ Research Agent tìm thông tin từ web, X, Hacker News, Wikipedia, GitHub và a
 
 **Dùng thử trên máy** tại [giao diện Streamlit](http://localhost:8501) sau khi chạy `python -m streamlit run app.py` từ thư mục `starter_v0/`. Chưa có URL công khai được xác nhận.
 
-**Kết quả base của cấu hình demo v3** đạt **19/20 (95%)**, chấm đủ 20 case và không có lỗi provider. [Run kiểm chứng](../../starter_v0/runs/v3-rerun_B_base_openrouter_20261110T184840496642.json)
+**Kết quả base của v3 trước khi sửa G10** đạt **19/20 (95%)**, chấm đủ 20 case và không có lỗi provider. [Run kiểm chứng](../../starter_v0/runs/v3-rerun_B_base_openrouter_20261110T184840496642.json)
+
+**Cấu hình demo sau khi sửa G10** đạt **10/10** trên bộ group. [Run group hiện tại](../../starter_v0/runs/v3-g10-fix_B_group_openrouter_20261110T232714907324.json)
 
 ## A2. Tool agent có
 
@@ -71,12 +73,12 @@ Các run base đã đối chiếu đều dùng OpenRouter với `openai/gpt-4o-m
 | v0 | Baseline | Đo hành vi của cấu hình starter để xác định nhóm lỗi. | — → **70% (14/20)** | [Run v0](../../starter_v0/runs/v0_B_base_openrouter_20261110T094641803175.json) |
 | v1 | `system_prompt.md` | Hướng dẫn rõ phạm vi nghiên cứu và khi nào hỏi lại để giảm gọi nhầm công cụ. | 70% → **85% (17/20)** | [Run v1](../../starter_v0/runs/v1_B_base_openrouter_20261110T103823244196.json) |
 | v2 | `system_prompt.md` và `tools.yaml` | Làm rõ cách chọn công cụ và tham số để giảm lỗi chọn sai. Điểm chọn đúng tool tăng từ 95% lên 100%, trong khi điểm toàn case giữ ở 85%. Vòng này thay đổi hai file nên kết quả đo tác động chung. | 85% → **85% (17/20)** | [Run v2](../../starter_v0/runs/v2_B_base_openrouter_20261110T113325303962.json) |
-| v3-rerun | `system_prompt_v3.md` và `tools.yaml` hiện tại | Kiểm tra lại cấu hình demo trên cùng bộ base. Hai hash khớp với cấu hình đang dùng. | 85% ở v2 → **95% (19/20)** | [Run v3 chính hiện tại](../../starter_v0/runs/v3-rerun_B_base_openrouter_20261110T184840496642.json) |
+| v3-rerun | Prompt và tools trước khi sửa G10 | Kiểm tra lại v3 trên cùng bộ base. | 85% ở v2 → **95% (19/20)** | [Run base v3 trước bản sửa](../../starter_v0/runs/v3-rerun_B_base_openrouter_20261110T184840496642.json) |
 | v2-LTM | Mô tả tool và bộ tool | Viết rõ thời điểm dùng tool và quy ước tham số. Vòng này cũng thêm bốn tool, nên không thể tách tác động của từng thay đổi. | 85% → **95% (19/20)** | [Run v2-LTM](../../starter_v0/runs/v2_B_base_openrouter_20261110T111547574574.json) |
 | v3-LTM | Prompt | Làm rõ routing, ví dụ handle và quy tắc xác nhận. R12 vẫn dùng sai kiểu xác nhận. | 95% → **95% (19/20)** | [Run v3-LTM](../../starter_v0/runs/v3_B_base_openrouter_20261110T111759856270.json) |
 | v4-LTM | Prompt | Yêu cầu `clarify(response_type="yes_no")` trước khi gửi. R12 đạt nhưng M06 gọi thừa `social_search`. | 95% → **95% (19/20)** | [Run v4-LTM](../../starter_v0/runs/v4_B_base_openrouter_20261110T111941600954.json) |
 
-Các dòng trên dùng log hợp lệ và có hash, giả thuyết, điểm trước/sau trong [nhật ký phiên bản](../../starter_v0/artifacts/version_log.csv). Run `v3-rerun` là bằng chứng cho bản v3 chính hiện tại. Run đã chấm đủ **20 case**, có **0 lỗi provider**, artifact `v3-rerun+p151ad41190b9+t8d9098dbc911`. Dòng `v3` lịch sử ghi 100% có hash khác và vẫn thiếu run đối chiếu. Run `v3-LTM` là kết quả riêng của nhánh LTM. Mỗi run phản ánh đúng bộ prompt và tool có hash ghi trong JSON.
+Các dòng trên dùng log hợp lệ và có hash, giả thuyết, điểm trước/sau trong [nhật ký phiên bản](../../starter_v0/artifacts/version_log.csv). Run `v3-rerun` đo cấu hình v3 trước khi sửa G10. Run đã chấm đủ **20 case**, có **0 lỗi provider**, artifact `v3-rerun+p151ad41190b9+t8d9098dbc911`. Dòng `v3` lịch sử ghi 100% có hash khác và vẫn thiếu run đối chiếu. Run `v3-LTM` là kết quả riêng của nhánh LTM. Mỗi run phản ánh đúng bộ prompt và tool có hash ghi trong JSON.
 
 ## B2. Phân tích lỗi
 
@@ -95,13 +97,17 @@ Sáu lỗi dưới đây lấy từ đúng run `v0` trong B1. Cột cuối mô t
 
 Ở `v3-LTM`, lỗi còn lại là `R12_confirm_before_send`. Model chọn đúng `clarify` nhưng truyền `response_type="text"` thay vì `"yes_no"`. `v4-LTM` sửa được R12, song `M06_switch_tool` phát sinh lời gọi `social_search` thừa khi người dùng đã chuyển sang tìm tin trên web.
 
-Bản v3 chính hiện tại trượt một case `M06_switch_tool`: sau khi người dùng chuyển từ X sang tin web, model gọi đúng `lookup` và gọi thêm `social_search`. Case xác nhận Telegram `R12_confirm_before_send` đạt. Lần chạy giữ Telegram ở trạng thái tắt và dùng tệp tạm cho ghi chú.
+Run base trước khi sửa G10 trượt một case `M06_switch_tool`: sau khi người dùng chuyển từ X sang tin web, model gọi đúng `lookup` và gọi thêm `social_search`. Case xác nhận Telegram `R12_confirm_before_send` đạt. Lần chạy giữ Telegram ở trạng thái tắt và dùng tệp tạm cho ghi chú.
+
+Sau khi sửa G10, [lần kiểm tra riêng M06](../../starter_v0/runs/v3-m06-check_B_base_openrouter_20261110T233946536828.json) vẫn FAIL vì gọi thừa `social_search`. Lần kiểm tra này chỉ chạy M06. Chưa có kết quả full base cho cấu hình sau bản sửa.
 
 ## B3. Eval nhóm
 
 Bộ [eval nhóm](../../starter_v0/data/eval_group.json) gồm đúng **10 case**, chia thành **5 single turn** (`query`) và **5 multi turn** (`turns`). Tám tool nhóm tự thêm đều có case kiểm tra routing. Hai case còn lại kiểm tra hủy gửi và hỏi lại khi thiếu tài khoản.
 
-[Run group v3](../../starter_v0/runs/v3-rerun_B_group_openrouter_20261110T185813206017.json) đạt **9/10 (90%)**, chấm đủ 10 case và không có lỗi provider. Eval chấm lời gọi tool và tham số. Telegram được tắt và ghi chú dùng tệp tạm trong lần chạy.
+[Run group trước bản sửa](../../starter_v0/runs/v3-rerun_B_group_openrouter_20261110T185813206017.json) đạt **9/10**. G10 gọi `timeline` với `screenname=""` sau khi người dùng chỉ bổ sung số lượng.
+
+Prompt v3 bổ sung ví dụ nhiều lượt để hỏi lại khi đã biết số bài nhưng còn thiếu tài khoản. Khai báo `timeline.screenname` bỏ mặc định rỗng và đặt `minLength: 1`. [Run sau bản sửa](../../starter_v0/runs/v3-g10-fix_B_group_openrouter_20261110T232714907324.json) đạt **10/10 (100%)**, chấm đủ 10 case và có **0 lỗi provider**. G10 gọi đúng `clarify(response_type="text")` để hỏi tài khoản X. [Lần chạy lại cùng hai hash](../../starter_v0/runs/v3-check_B_group_openrouter_20261110T232849101679.json) cũng đạt **10/10**. Bảng dưới đây ghi kết quả sau bản sửa.
 
 | Case | Kiểu | Hành vi kiểm tra | Tool và tham số kỳ vọng | Kết quả |
 | --- | --- | --- | --- | --- |
@@ -111,7 +117,7 @@ Bộ [eval nhóm](../../starter_v0/data/eval_group.json) gồm đúng **10 case*
 | `LTM_G04_datetime_routing` | Single turn | Hỏi thời gian hiện tại → datetime, không phải lookup. | `datetime` | PASS |
 | `G12_wikipedia_search_vi` | Single turn | Chọn wiki_search cho danh sách bài Wikipedia tiếng Việt thay vì wiki để lấy tóm tắt một trang. | `wiki_search(query="học tăng cường", language="vi", max_results=3)` | PASS |
 | `G08_cancel_delivery` | Multi turn | Tôn trọng yêu cầu hủy ở lượt cuối, không gọi công cụ sau khi người dùng từ chối. | Không gọi tool | PASS |
-| `LTM_G10_still_missing_handle_clarify` | Multi turn | 2 turns: đã có limit=5 nhưng VẪN thiếu handle → clarify xin tên tài khoản, không đoán bừa. | `clarify(response_type="text")` | FAIL — missing tool call clarify; extra tool call timeline |
+| `LTM_G10_still_missing_handle_clarify` | Multi turn | 2 turns: đã có limit=5 nhưng VẪN thiếu handle → clarify xin tên tài khoản, không đoán bừa. | `clarify(response_type="text")` | PASS — hỏi tên tài khoản qua clarify |
 | `G11_hn_refine_to_ask` | Multi turn | Giữ từ khóa và số lượng từ lượt trước, đổi bộ lọc sang Ask HN. | `hn_search(query="local LLM", tag="ask_hn", max_results=3)` | PASS |
 | `G13_repo_sort_correction` | Multi turn | Giữ GitHub, từ khóa và số lượng từ lượt trước, đồng thời đổi cách sắp xếp sang updated. | `repo_search(query="agent evaluation", sort="updated", max_results=4)` | PASS |
 | `G14_notes_list_limit` | Multi turn | Giữ ý định xem ghi chú ở lượt trước và gọi notes với thao tác list, giới hạn 2. | `notes(action="list", limit=2)` | PASS |
