@@ -1,0 +1,83 @@
+{
+  "transcript_id": "ui_openrouter_20261110T121149451321",
+  "version": "ui",
+  "artifact_version": "ui+pb433d37b022d+t6802d6a76102",
+  "prompt_hash": "b433d37b022d96198a1833802bd5ef3f5b93c6b731f99604935dddf0f21a368b",
+  "tools_hash": "6802d6a76102c6fb2c94696a1cc57305b4f8112d10d5e77f30c4436ead1b6067",
+  "provider": "openrouter",
+  "model": "default",
+  "created_at": "2026-11-10T12:11:49",
+  "updated_at": "2026-11-10T12:16:25",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T12:11:49",
+      "user": "social search jessen huang",
+      "status": "answered",
+      "assistant_text": "It seems there was an issue retrieving recent posts about Jensen Huang due to a missing configuration. Unfortunately, I can't access that information at the moment.\n\nIf you have a specific topic or question about Jensen Huang, feel free to ask, and I can help with other resources or information!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "social_search",
+              "args": {
+                "query": "jensen huang"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "social_search",
+              "args": {
+                "query": "jensen huang"
+              },
+              "result": {
+                "tool": "search_tweets",
+                "error": "RuntimeError",
+                "message": "Missing RAPIDAPI_KEY env var"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "It seems there was an issue retrieving recent posts about Jensen Huang due to a missing configuration. Unfortunately, I can't access that information at the moment.\n\nIf you have a specific topic or question about Jensen Huang, feel free to ask, and I can help with other resources or information!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "social_search",
+          "args": {
+            "query": "jensen huang"
+          },
+          "result": {
+            "tool": "search_tweets",
+            "error": "RuntimeError",
+            "message": "Missing RAPIDAPI_KEY env var"
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T12:11:52"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T12:15:20",
+      "user": "wiki xuất phát từ đâu ",
+      "status": "provider_error",
+      "error": "ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+      "ended_at": "2026-11-10T12:15:20"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-11-10T12:16:24",
+      "user": "Lấy các bài đăng gần đây.",
+      "status": "provider_error",
+      "error": "ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}",
+      "ended_at": "2026-11-10T12:16:25"
+    }
+  ]
+}
