@@ -1,0 +1,21 @@
+{
+  "transcript_id": "ui_openrouter_20261110T105116450836",
+  "version": "ui",
+  "artifact_version": "ui+p691183f1c7d8+t6802d6a76102",
+  "prompt_hash": "691183f1c7d89e976fec3568daa759d511d54bbbb0c2223a7ea86df5a1f61ff0",
+  "tools_hash": "6802d6a76102c6fb2c94696a1cc57305b4f8112d10d5e77f30c4436ead1b6067",
+  "provider": "openrouter",
+  "model": "1",
+  "created_at": "2026-11-10T10:51:16",
+  "updated_at": "2026-11-10T10:51:23",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T10:51:16",
+      "user": "yêu cầu học ai",
+      "status": "provider_error",
+      "error": "BadRequestError: Error code: 400 - 1 is not a valid model ID",
+      "ended_at": "2026-11-10T10:51:23"
+    }
+  ]
+}
