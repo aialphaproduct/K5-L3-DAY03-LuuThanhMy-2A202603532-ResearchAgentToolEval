@@ -1,0 +1,923 @@
+{
+  "run_id": "v3-functiongemma270m_B_base_ollama_20261110T165021609724",
+  "version": "v3-functiongemma270m",
+  "artifact_version": "v3-functiongemma270m+pb433d37b022d+t6802d6a76102",
+  "prompt_hash": "b433d37b022d96198a1833802bd5ef3f5b93c6b731f99604935dddf0f21a368b",
+  "tools_hash": "6802d6a76102c6fb2c94696a1cc57305b4f8112d10d5e77f30c4436ead1b6067",
+  "phase": "B",
+  "suite": "base",
+  "provider": "ollama",
+  "model": "functiongemma:270m",
+  "system_prompt": "C:\\Users\\duongdeptrai\\Documents\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\Users\\duongdeptrai\\Documents\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "C:\\Users\\duongdeptrai\\Documents\\Day03-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\data\\eval_base.json",
+  "dataset_id": "day04_v2_research_base",
+  "dataset_role": "base",
+  "description": "Core eval cho research agent: routing đúng tool + đúng args, hỏi lại khi thiếu (ask_user), xác nhận trước khi gửi, và xử lý câu ngoài phạm vi / không cần tool. Chấm trên tool_calls + args (subset). KHÔNG sửa file này — chỉ thêm case vào eval_group.json.",
+  "generated_at": "2026-11-10T16:50:21",
+  "summary": {
+    "total_cases": 20,
+    "measured_cases": 20,
+    "provider_error_cases": 0,
+    "passed_cases": 3,
+    "case_accuracy": 0.15,
+    "tool_routing_accuracy": 0.2,
+    "argument_accuracy": 0.15,
+    "multiturn_accuracy": 0.0,
+    "failure_counts": {
+      "wrong_tool": 6,
+      "wrong_arg_value": 6,
+      "missing_info": 4,
+      "wrong_boundary": 1
+    },
+    "observed_mismatch_counts": {
+      "missing_tool_call": 16,
+      "wrong_arg_value": 1
+    }
+  },
+  "results": [
+    {
+      "id": "R01_user_tweets_routing",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_user_tweets_name_to_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Tin CỦA một người nổi tiếng → map tên Sam Altman thành handle sama rồi gọi get_user_tweets."
+      },
+      "input": "Tweet mới nhất của Sam Altman là gì?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "sama"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call timeline"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R02_search_tweets_routing",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_search_tweets",
+        "difficulty": "easy",
+        "what_it_tests": "Tweet theo CHỦ ĐỀ → search_tweets, không phải get_user_tweets."
+      },
+      "input": "Mọi người đang bàn gì về GPT-5 trên Twitter?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call social_search"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R03_web_news_routing",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_web_news",
+        "difficulty": "medium",
+        "what_it_tests": "Tin thời sự trên web → web_search topic=news, timeframe=day (hôm nay)."
+      },
+      "input": "Tin tức AI hôm nay có gì nổi bật?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call lookup"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R04_read_url_routing",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_read_url",
+        "difficulty": "easy",
+        "what_it_tests": "Đã có link cụ thể → read_url, không phải web_search."
+      },
+      "input": "Tóm tắt bài này giúp mình: https://openai.com/blog/gpt-5",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://openai.com/blog/gpt-5"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call fetch"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R05_limit_arg",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_limit",
+        "difficulty": "easy",
+        "what_it_tests": "Trích đúng limit=10 từ '10 tweet'."
+      },
+      "input": "Lấy 10 tweet mới nhất của Elon Musk",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 10
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "tweets_recent_latest_posts",
+            "args": {
+              "limit": 10,
+              "screenname": "mma"
+            }
+          }
+        ],
+        "actual_text": " call:timeline{limit:10}<end_function_call> call:social_search{limit:10,query: mọi người đang bàn gì về X}<end_function_call> call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{url: https://www.example.com/elon-musk-tweet?q=elon+musk+tweet&limit=5&source=elon+musk&summary=tweet_summary_full}<end_function_call> \n call:notes{action: list để đọc lại ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes{action: save để ghi chú}<end_function_call> \n call:fetch{}<end_function_call> \n call:notes",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "missing tool call timeline",
+          "extra tool call tweets_recent_latest_posts"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "tweets_recent_latest_posts",
+          "error": "unknown_tool"
+        }
+      ]
+    },
+    {
+      "id": "R06_timeframe_arg",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_timeframe",
+        "difficulty": "medium",
+        "what_it_tests": "'tuần này' → timeframe=week."
+      },
+      "input": "Tin công nghệ trong tuần này",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "missing tool call lookup"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R07_search_type_arg",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_search_type",
+        "difficulty": "medium",
+        "what_it_tests": "'phổ biến/top' → search_type=Top (không phải Latest)."
+      },
+      "input": "Cho mình các tweet phổ biến (top) nhất về OpenAI",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "social_search",
+            "args": {
+              "search_type": "Top"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "",
+            "args": {}
+          }
+        ],
+        "actual_text": "  llamada:notes{action: list để đọc lại ghi chú,limit:10}<end_function_call>  llamada:history{action: tìm bài đăng GẦryw (18+) của MỘt tài khoản X/Twitter}<end_function_call>  llamada:policy{action: tìm kiếm trong sổ tay chính sách nội bộ,query: openai policy}<end_function_call>  llamada:papers{action: tìm paper khoa học trên arXiv,max_results:10}<end_function_call>  llamada:wiki_search{action: tìm bài / định nghĩa trên Wikipedia,query: openai wiki}<end_function_call>  llamada:notes{action: ghi chú lại, lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lại, lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú file cục bộ,limit:10}<end_function_call>  llamada:notes{action: ghi chú lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú save để lưu ghi chú,limit:10}<end_function_call>  llamada:notes{action: ghi chú",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "missing tool call social_search",
+          "extra tool call "
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "",
+          "error": "unknown_tool"
+        }
+      ]
+    },
+    {
+      "id": "R08_out_of_scope",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "out_of_scope",
+        "difficulty": "easy",
+        "what_it_tests": "Câu ngoài phạm vi research → KHÔNG gọi tool, từ chối/định hướng."
+      },
+      "input": "Giải giúp mình bài toán tích phân: nguyên hàm của x^2 là gì?",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "I apologize, but I cannot assist with mathematical calculations or problem-solving related to mathematical concepts. My current tools are focused on providing information and assisting with tasks like text retrieval, social search, and document summarization. I cannot provide explanations or solutions to complex mathematical problems.",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R09_no_tool_capability",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "no_tool_meta",
+        "difficulty": "easy",
+        "what_it_tests": "Câu hỏi meta → trả lời thẳng, KHÔNG gọi tool."
+      },
+      "input": "Bạn là gì và làm được những gì?",
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "I am sorry, but I cannot assist with answering specific requests. My current capabilities are focused on assisting with communication through text-based tools like searching for news, tweets, and articles. I cannot browse the internet, check external websites, or provide expert advice.",
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R10_missing_handle",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "clarify_missing_handle",
+        "difficulty": "medium",
+        "what_it_tests": "Thiếu handle → ask_user, KHÔNG đoán bừa người nào."
+      },
+      "input": "Tóm tắt 5 tweet mới nhất giúp mình",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call clarify"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R11_missing_url",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "clarify_missing_url",
+        "difficulty": "medium",
+        "what_it_tests": "Nói 'bài này' nhưng không có link → ask_user xin URL."
+      },
+      "input": "Tóm tắt bài viết này hộ mình",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call clarify"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R12_confirm_before_send",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "confirm_before_write",
+        "difficulty": "medium",
+        "what_it_tests": "Hành động ghi (gửi) → xác nhận trước (ask_user yes_no), không tự gửi."
+      },
+      "input": "Đăng bản tin này lên Telegram giúp mình",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_boundary",
+        "failures": [
+          "missing tool call clarify"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R13_parallel_web_and_tweets",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "parallel_tool_calls",
+        "difficulty": "hard",
+        "what_it_tests": "Một request cần hai nguồn → gọi cả web_search và search_tweets; eval không phụ thuộc thứ tự tool call."
+      },
+      "input": "Tìm trên web tin AI hôm nay và tìm thêm tweet về AI.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          },
+          {
+            "name": "social_search",
+            "args": {
+              "query": "AI"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call lookup",
+          "missing tool call social_search"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "R14_out_of_scope_coding",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "out_of_scope_coding",
+        "difficulty": "easy",
+        "what_it_tests": "Câu coding ngoài phạm vi research/news → KHÔNG gọi tool."
+      },
+      "input": "Viết giúp mình một hàm Python tính Fibonacci bằng recursion.",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "I apologize, but I cannot assist with writing Python code. My current capabilities are limited to utilizing the provided tools for communication, research, and document management. I cannot generate or elaborate on programming tasks.",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "M01_clarify_then_fill",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_clarify_fill",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: carry limit=5 từ lượt 1 + map tên Elon Musk thành handle elonmusk từ lượt 2."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tóm tắt 5 tweet mới nhất giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Của Elon Musk nhé"
+        },
+        {
+          "role": "user",
+          "content": "Giữ đúng 5 tweet, đừng đổi số lượng"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 5
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "",
+            "args": {}
+          }
+        ],
+        "actual_text": " with action:fetch{url: Tweet 2: [URL Tweet 2],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 3: [URL Tweet 3],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 4: [URL Tweet 4],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 5: [URL Tweet 5],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 2: [URL Tweet 2],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 3: [URL Tweet 3],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 4: [URL Tweet 4],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 5: [URL Tweet 5],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 2: [URL Tweet 2],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 3: [URL Tweet 3],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 4: [URL Tweet 4],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 5: [URL Tweet 5],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet 2: [URL Tweet 2],limit:5,items:[ tweet 1, tweet 2, tweet 3, tweet 4, tweet 5]}<end_function_call> with action:fetch{url: Tweet",
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call timeline",
+          "extra tool call "
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "",
+          "error": "unknown_tool"
+        }
+      ]
+    },
+    {
+      "id": "M02_carryover_timeframe",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_carryover",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: chỉ xử lý latest turn, carry timeframe=day và topic=news, query robotics."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin AI hôm nay có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Còn về robotics thì sao?"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm robotics thôi, vẫn là tin hôm nay"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "robotics",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "- Earlier user turn 1: Tin AI hôm nay có gì?\n- Earlier user turn 2: Còn về robotics thì sao?",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "missing tool call lookup"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "M03_correction_handle",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: map tên thường, sửa Sam Altman→Andrej Karpathy, dùng handle karpathy và limit=3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tweet mới nhất của Sam Altman"
+        },
+        {
+          "role": "user",
+          "content": "À nhầm, của Andrej Karpathy"
+        },
+        {
+          "role": "user",
+          "content": "Lấy 3 tweet mới nhất nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "karpathy",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "missing tool call timeline"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "M04_clarify_then_url",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_clarify_url",
+        "difficulty": "medium",
+        "what_it_tests": "3 turns: sau khi được cung cấp URL, latest turn xác nhận chỉ đọc link đó → read_url đúng url."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài này hộ mình"
+        },
+        {
+          "role": "user",
+          "content": "https://anthropic.com/news/claude"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ đọc đúng link đó thôi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://anthropic.com/news/claude"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "I apologize, but I cannot assist with this request. My current tools are limited to assisting with text retrieval, social search, and document summarization, and I cannot access or process real-time news or external content. I recommend consulting a different source for this information.",
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call fetch"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "M05_correction_limit",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_arg_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: map tên Elon Musk, carry handle elonmusk, sửa limit 10→3."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Lấy 10 tweet mới nhất của Elon Musk"
+        },
+        {
+          "role": "user",
+          "content": "Cho mình 3 thôi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn của Elon Musk nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "elonmusk",
+              "limit": 3
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": true,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "limit": 10,
+              "screenname": "musk"
+            }
+          }
+        ],
+        "actual_text": " call:notes{action: lưu ghi chú (cần text),text: Lấy 10 tweet mới nhất của Elon Musk.,limit:10}<end_function_call> call:history{limit:3,query: Elon Musk news}<end_function_call> call:fetch{query: Elon Musk review paper research}<end_function_call> call:notes{action: trình bày digest (format),text: Lấy 10 tweet mới nhất của Elon Musk.,limit:10}<end_function_call> call:format{headline: Tóm tắt ngắn gọn, kèm trích nguồn,items:[ title, url, source, summary, section (optional)],template: daily_ai_vn}<end_function_call> call:papers{max_results:10,query: Elon Musk papers}<end_function_call> call:notes{action: lưu ghi chú (cần text),limit:3,title: Lưu ghi chú (cần text)}<end_function_call> Finally, I fetched the latest news for Elon Musk.",
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": "wrong_arg_value",
+        "failure_type": "wrong_arg_value",
+        "failures": [
+          "screenname: expected 'elonmusk', got 'musk'",
+          "limit: expected 3, got 10"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "limit": 10,
+            "screenname": "musk"
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "error": "RuntimeError",
+            "message": "Missing RAPIDAPI_KEY env var"
+          }
+        }
+      ]
+    },
+    {
+      "id": "M06_switch_tool",
+      "phase": "B",
+      "suite": "base",
+      "case_suite": "base",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_switch_tool",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: explicitly bỏ Twitter, chuyển sang web_search news, giữ chủ đề OpenAI."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Mọi người nói gì về OpenAI trên Twitter?"
+        },
+        {
+          "role": "user",
+          "content": "Bỏ Twitter, chuyển sang tìm trên web tin tức đi"
+        },
+        {
+          "role": "user",
+          "content": "Giữ chủ đề OpenAI"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "OpenAI",
+              "topic": "news"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "api_call_openai",
+            "args": {
+              "limit": 5,
+              "query": " OpenAI on Twitter | use GPT-4"
+            }
+          }
+        ],
+        "actual_text": " call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:5,query: OpenAI on Twitter | use GPT-4}<end_function_call> call:api_call_openai{limit:",
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call lookup",
+          "extra tool call api_call_openai"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "api_call_openai",
+          "error": "unknown_tool"
+        }
+      ]
+    }
+  ]
+}

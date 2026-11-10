@@ -1,0 +1,149 @@
+{
+  "transcript_id": "ui_openrouter_20261110T112019632222",
+  "version": "ui",
+  "artifact_version": "ui+p26a6fa7007f9+t6802d6a76102",
+  "prompt_hash": "26a6fa7007f9ed675a3ba68103d6d93820892e1d44e3d141e0bd5151009fc03f",
+  "tools_hash": "6802d6a76102c6fb2c94696a1cc57305b4f8112d10d5e77f30c4436ead1b6067",
+  "provider": "openrouter",
+  "model": "default",
+  "created_at": "2026-11-10T11:20:19",
+  "updated_at": "2026-11-10T11:20:31",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T11:20:19",
+      "user": "tin AI hôm nay ",
+      "status": "answered",
+      "assistant_text": "Here are some recent news articles related to AI today:\n\n1. **[AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD](https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318)**  \n   Source: tin.skydoor.net  \n   Summary: The first episode of the AI Thực chiến 2026 program aired on VTV2 on November 5, marking the start of a competition among 100 outstanding teams selected from nearly 1,000 applications from the Vietnamese community worldwide.\n\n2. **[Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình](https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253)**  \n   Source: tin.skydoor.net  \n   Summary: Egyptian MC Sarah Khalifa has been sentenced to death for allegedly producing and trafficking large quantities of drugs.\n\n3. **[Tỷ giá USD hôm nay (10-11): Đồng đô la Mỹ (USD) suy yếu](https://www.qdnd.vn/kinh-te/tin-tuc/ty-gia-usd-hom-nay-10-11-dong-usd-suy-yeu-1063935)**  \n   Source: qdnd.vn  \n   Summary: The USD has weakened against major currencies, including the EUR and Japanese yen, as concerns about escalating conflict in Iran eased, prompting investors to shift funds back to higher-risk assets.\n\n4. **[Mỹ phát tín hiệu hạn chế không kích Iran | Tin Thế giới 24 Giờ ngày 9/11/2026](https://htv.vn/my-phat-tin-hieu-han-che-khong-kich-iran-tin-the-gioi-24-gio-ngay-9-11-2026-222261109191116907.htm)**  \n   Source: htv.vn  \n   Summary: The U.S. has signaled readiness to take firm measures if Tehran does not meet conditions, amidst ongoing issues related to a train accident in Egypt.\n\n5. **[Nữ doanh nhân bị cáo buộc gián điệp, ngoại tình với Jensen Huang là ai?](https://eva.vn/tin-tuc/nu-doanh-nhan-bi-cao-buoc-gian-diep-ngoai-tinh-voi-jensen-huang-la-ai-c73a688586.html)**  \n   Source: eva.vn  \n   Summary: An investigation into Megaspeed has raised suspicions about the destination of valuable AI equipment purchased by the company, with connections to Chinese intelligence.\n\nFeel free to ask if you need more information on any specific topic!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "tin AI hôm nay",
+                "topic": "news",
+                "timeframe": "day"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "tin AI hôm nay",
+                "topic": "news",
+                "timeframe": "day"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "tin AI hôm nay",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318",
+                    "source": "tin.skydoor.net",
+                    "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD\n\nTối 5/11, tập đầu tiên của chương trình AI Thực chiến 2026 đã chính thức phát sóng trên kênh VTV2, đánh dấu khởi đầu cuộc thi giữa 100 đội xuất sắc nhất, được lựa chọn từ gần 1.000 hồ sơ của cộng đồng người Việt trong nước và toàn cầu, để tranh tài.\n\nĐọc tin gốc tại tuoitre.vn → [...] ## Tin tức Tài chính - Ngn hàng mới nhất hôm nay\n\n[](\n\n### Sau thành công tại Singapore, Techcombank tiếp tục tìm kiếm nhn tài toàn cầu tại London\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### VietinBank kết nối doanh nghiệp FDI: Tìm đối tác, đón cơ hội đầu tư\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Sinh viên khó khăn và gia đình hào hứng đón nhận tin vui\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Nhìn từ dòng tiền 3 doanh nghiệp bất động sản: Tiền nghìn tỷ, sức khỏe tài chính ra sao?\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh",
+                    "score": 0.48221022
+                  },
+                  {
+                    "title": "Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253",
+                    "source": "tin.skydoor.net",
+                    "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình\n\nNữ MC Ai Cập Sarah Khalifa bị tuyên án tử hình vì cáo buộc sản xuất, buôn bán ma túy quy mô lớn.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Ai Cập mới nhất hôm nay\n\n[](\n\n### Hiện trường hai tàu hỏa đm nhau ở Ai Cập, hơn 130 người thương vong\n\n21 giờ trước–kienthuc.net.vnkienthuc.net.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Hiện trường 2 tàu hỏa đm nhau thảm khốc, 119 người thương vong\n\n21 giờ trước–cafef.vncafef.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Va chạm tàu hỏa, gần 100 người thương vong\n\n1 ngày trước–dttc.sggp.org.vndttc.sggp.org.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Hai đoàn tàu đm nhau, hơn 90 người thương vong\n\n1 ngày trước–24h.com.vn24h.com.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay\n\n[]( [...] [](\n\n### Tổng Bí thư, Chủ tịch nước Tô Lm tiếp lãnh đạo các ngn hàng và tập đoàn lớn Nhật Bản\n\n4 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Tiêm kích Gripen E đối đầu Su-35: Cuộc so tài giữa công nghệ phương Ty và sức mạnh động cơ Nga\n\n8 giờ trước–anninhthudo.vnanninhthudo.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Những nạn nhn đang phải trả giá cho cuộc chiến ở eo biển Hormuz\n\n9 giờ trước–baotintuc.vnbaotintuc.vn\n\nXem tóm tắt nhanh\n\n[](",
+                    "score": 0.45507812
+                  },
+                  {
+                    "title": "Tỷ giá USD hôm nay (10-11): Đồng đô la Mỹ (USD) suy yếu",
+                    "url": "https://www.qdnd.vn/kinh-te/tin-tuc/ty-gia-usd-hom-nay-10-11-dong-usd-suy-yeu-1063935",
+                    "source": "qdnd.vn",
+                    "summary": "Đồng USD giảm giá so với các đồng tiền chủ chốt, trong đó có đồng EUR và đồng yên Nhật Bản, trong phiên giao dịch ngày thứ Hai, khi những lo ngại về nguy cơ xung đột tại Iran leo thang dịu bớt, thúc đẩy giới đầu tư chuyển dòng vốn trở lại các tài sản có mức độ rủi ro cao hơn, sau đợt bán tháo cổ phiếu liên quan đến trí tuệ nhân tạo (AI) trong tuần trước. [...] Ông Diaz-Alvarez cho rằng: “Thị trường đang phần nào đánh giá thấp tác động của cuộc bầu cử giữa nhiệm kỳ tại Mỹ đối với nền kinh tế nước này. Đầu tư vào lĩnh vực AI đã đóng góp đáng kể vào kết quả tăng trưởng kinh tế Mỹ. Do đó, những thay đổi lớn về chính trị tại Mỹ, dù chỉ ở mức độ nhất định, cũng có thể tác động tiêu cực đến dòng vốn đầu tư này”.",
+                    "score": 0.3493335
+                  },
+                  {
+                    "title": "Mỹ phát tín hiệu hạn chế không kích Iran | Tin Thế giới 24 Giờ ngày 9/11/2026",
+                    "url": "https://htv.vn/my-phat-tin-hieu-han-che-khong-kich-iran-tin-the-gioi-24-gio-ngay-9-11-2026-222261109191116907.htm",
+                    "source": "htv.vn",
+                    "summary": "Mỹ phát tín hiệu sẵn sàng có các biện pháp cứng rắn nếu Tehran không đáp ứng điều kiện\n\n### Tai nạn đường sắt ở Ai Cập\n\nHôm nay, công nhn đường sắt bắt đầu sửa chữa đường ray sau vụ tai nạn giữa hai đoàn tàu chở khách ở phía Nam Cairo, xảy ra vào hôm qua. Tính đến hiện tại, ít nhất 7 người thiệt mạng và 125 người bị thương.\n\nMỹ phát tín hiệu hạn chế không kích Iran | Tin Thế giới 24 Giờ ngày 9/11/2026 - Ảnh 2.\n\nHiện trường vụ tai nạn đường sắt ở phía Nam Cairo, Ai Cập [...] Tin Thế giới 24 Giờ ngày 25/8/2026| Mỹ siết trừng phạt kinh tế quy mô lớn nhằm vào Iran \n\n### Tin Thế giới 24 Giờ ngày 25/8/2026| Mỹ siết trừng phạt kinh tế quy mô lớn nhằm vào Iran\n\nTin Thế giới 24 Giờ ngày 29/7/2026 | Động đất Nhật Bản: Nỗ lực tìm kiếm người mất tích \n\n### Tin Thế giới 24 Giờ ngày 29/7/2026 | Động đất Nhật Bản: Nỗ lực tìm kiếm người mất tích\n\nTin Thế giới 24 Giờ ngày 28/7/2026 | Iran và Oman đàm phán về eo biển Hormuz [...] Và còn rất nhiều thông tin nổi bật khác tại Chương trình Thế giới 24 Giờ ngày 9/11/2026.\n\n## Danh sách tập\n\nTin Thế giới 24 Giờ ngày 5/9/2026 | LHQ thông qua nghị quyết  \n\n### Tin Thế giới 24 Giờ ngày 5/9/2026 | LHQ thông qua nghị quyết \"vẽ lại\" bản đồ thế giới\n\nTin Thế giới 24 Giờ ngày 10/9/2026 | Philippines: Cháy phà ở phía Ty đảo Palawan, hàng chục người mất tích \n\n### Tin Thế giới 24 Giờ ngày 10/9/2026 | Philippines: Cháy phà ở phía Ty đảo Palawan, hàng chục người mất tích",
+                    "score": 0.32662624
+                  },
+                  {
+                    "title": "Nữ doanh nhân bị cáo buộc gián điệp, ngoại tình với Jensen Huang là ai?",
+                    "url": "https://eva.vn/tin-tuc/nu-doanh-nhan-bi-cao-buoc-gian-diep-ngoai-tinh-voi-jensen-huang-la-ai-c73a688586.html",
+                    "source": "eva.vn",
+                    "summary": "Cuộc điều tra của Mỹ đối với Megaspeed bắt đầu từ cuối năm 2024. Một chi tiết đáng chú ý được The New York Times tiết lộ là trong chuyến thăm một trung tm dữ liệu của công ty tại Malaysia, quan chức Bộ Thương mại Mỹ phát hiện thiết bị Nvidia vẫn nằm nguyên trong các thùng đóng gói.\n\nPhát hiện này góp phần làm dấy lên nghi vấn về đích đến thực sự của những lô thiết bị AI có giá trị lớn mà Megaspeed và các công ty liên quan mua. [...] Tuy nhiên, NBC News cho biết chưa xác nhận được các thông tin do The New York Times và Financial Times công bố. Cho đến nay, chưa có cá nhn hay doanh nghiệp nào được đề cập bị truy tố liên quan đến những cáo buộc này.\n\nNhững hình ảnh được cho là Alice Huang xuất hiện bên cạnh CEO Nvidia.\n\nMegaspeed và những thương vụ chip AI hàng tỷ USD [...] Theo The New York Times, tình báo Mỹ kết luận Alice Huang là một nhn vật có liên hệ với cơ quan tình báo Trung Quốc và thu thập thông tin cho Bắc Kinh. Đáng chú ý, bà được cho là phát triển mối quan hệ thn thiết với Jensen Huang, người đứng đầu tập đoàn sản xuất chip AI hàng đầu thế giới.\n\nFinancial Times sau đó đưa tin một bản ghi nhớ của chính phủ Mỹ cho rằng Alice Huang được Bộ An ninh Quốc gia Trung Quốc (MSS) tuyển mộ và hai người có quan hệ tình cảm.",
+                    "score": 0.19019738
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some recent news articles related to AI today:\n\n1. **[AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD](https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318)**  \n   Source: tin.skydoor.net  \n   Summary: The first episode of the AI Thực chiến 2026 program aired on VTV2 on November 5, marking the start of a competition among 100 outstanding teams selected from nearly 1,000 applications from the Vietnamese community worldwide.\n\n2. **[Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình](https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253)**  \n   Source: tin.skydoor.net  \n   Summary: Egyptian MC Sarah Khalifa has been sentenced to death for allegedly producing and trafficking large quantities of drugs.\n\n3. **[Tỷ giá USD hôm nay (10-11): Đồng đô la Mỹ (USD) suy yếu](https://www.qdnd.vn/kinh-te/tin-tuc/ty-gia-usd-hom-nay-10-11-dong-usd-suy-yeu-1063935)**  \n   Source: qdnd.vn  \n   Summary: The USD has weakened against major currencies, including the EUR and Japanese yen, as concerns about escalating conflict in Iran eased, prompting investors to shift funds back to higher-risk assets.\n\n4. **[Mỹ phát tín hiệu hạn chế không kích Iran | Tin Thế giới 24 Giờ ngày 9/11/2026](https://htv.vn/my-phat-tin-hieu-han-che-khong-kich-iran-tin-the-gioi-24-gio-ngay-9-11-2026-222261109191116907.htm)**  \n   Source: htv.vn  \n   Summary: The U.S. has signaled readiness to take firm measures if Tehran does not meet conditions, amidst ongoing issues related to a train accident in Egypt.\n\n5. **[Nữ doanh nhân bị cáo buộc gián điệp, ngoại tình với Jensen Huang là ai?](https://eva.vn/tin-tuc/nu-doanh-nhan-bi-cao-buoc-gian-diep-ngoai-tinh-voi-jensen-huang-la-ai-c73a688586.html)**  \n   Source: eva.vn  \n   Summary: An investigation into Megaspeed has raised suspicions about the destination of valuable AI equipment purchased by the company, with connections to Chinese intelligence.\n\nFeel free to ask if you need more information on any specific topic!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "tin AI hôm nay",
+            "topic": "news",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "tin AI hôm nay",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD | Sky Tin",
+                "url": "https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318",
+                "source": "tin.skydoor.net",
+                "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD\n\nTối 5/11, tập đầu tiên của chương trình AI Thực chiến 2026 đã chính thức phát sóng trên kênh VTV2, đánh dấu khởi đầu cuộc thi giữa 100 đội xuất sắc nhất, được lựa chọn từ gần 1.000 hồ sơ của cộng đồng người Việt trong nước và toàn cầu, để tranh tài.\n\nĐọc tin gốc tại tuoitre.vn → [...] ## Tin tức Tài chính - Ngn hàng mới nhất hôm nay\n\n[](\n\n### Sau thành công tại Singapore, Techcombank tiếp tục tìm kiếm nhn tài toàn cầu tại London\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### VietinBank kết nối doanh nghiệp FDI: Tìm đối tác, đón cơ hội đầu tư\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Sinh viên khó khăn và gia đình hào hứng đón nhận tin vui\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Nhìn từ dòng tiền 3 doanh nghiệp bất động sản: Tiền nghìn tỷ, sức khỏe tài chính ra sao?\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh",
+                "score": 0.48221022
+              },
+              {
+                "title": "Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình | Sky Tin",
+                "url": "https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253",
+                "source": "tin.skydoor.net",
+                "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình\n\nNữ MC Ai Cập Sarah Khalifa bị tuyên án tử hình vì cáo buộc sản xuất, buôn bán ma túy quy mô lớn.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Ai Cập mới nhất hôm nay\n\n[](\n\n### Hiện trường hai tàu hỏa đm nhau ở Ai Cập, hơn 130 người thương vong\n\n21 giờ trước–kienthuc.net.vnkienthuc.net.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Hiện trường 2 tàu hỏa đm nhau thảm khốc, 119 người thương vong\n\n21 giờ trước–cafef.vncafef.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Va chạm tàu hỏa, gần 100 người thương vong\n\n1 ngày trước–dttc.sggp.org.vndttc.sggp.org.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Hai đoàn tàu đm nhau, hơn 90 người thương vong\n\n1 ngày trước–24h.com.vn24h.com.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay\n\n[]( [...] [](\n\n### Tổng Bí thư, Chủ tịch nước Tô Lm tiếp lãnh đạo các ngn hàng và tập đoàn lớn Nhật Bản\n\n4 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Tiêm kích Gripen E đối đầu Su-35: Cuộc so tài giữa công nghệ phương Ty và sức mạnh động cơ Nga\n\n8 giờ trước–anninhthudo.vnanninhthudo.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Những nạn nhn đang phải trả giá cho cuộc chiến ở eo biển Hormuz\n\n9 giờ trước–baotintuc.vnbaotintuc.vn\n\nXem tóm tắt nhanh\n\n[](",
+                "score": 0.45507812
+              },
+              {
+                "title": "Tỷ giá USD hôm nay (10-11): Đồng đô la Mỹ (USD) suy yếu",
+                "url": "https://www.qdnd.vn/kinh-te/tin-tuc/ty-gia-usd-hom-nay-10-11-dong-usd-suy-yeu-1063935",
+                "source": "qdnd.vn",
+                "summary": "Đồng USD giảm giá so với các đồng tiền chủ chốt, trong đó có đồng EUR và đồng yên Nhật Bản, trong phiên giao dịch ngày thứ Hai, khi những lo ngại về nguy cơ xung đột tại Iran leo thang dịu bớt, thúc đẩy giới đầu tư chuyển dòng vốn trở lại các tài sản có mức độ rủi ro cao hơn, sau đợt bán tháo cổ phiếu liên quan đến trí tuệ nhân tạo (AI) trong tuần trước. [...] Ông Diaz-Alvarez cho rằng: “Thị trường đang phần nào đánh giá thấp tác động của cuộc bầu cử giữa nhiệm kỳ tại Mỹ đối với nền kinh tế nước này. Đầu tư vào lĩnh vực AI đã đóng góp đáng kể vào kết quả tăng trưởng kinh tế Mỹ. Do đó, những thay đổi lớn về chính trị tại Mỹ, dù chỉ ở mức độ nhất định, cũng có thể tác động tiêu cực đến dòng vốn đầu tư này”.",
+                "score": 0.3493335
+              },
+              {
+                "title": "Mỹ phát tín hiệu hạn chế không kích Iran | Tin Thế giới 24 Giờ ngày 9/11/2026",
+                "url": "https://htv.vn/my-phat-tin-hieu-han-che-khong-kich-iran-tin-the-gioi-24-gio-ngay-9-11-2026-222261109191116907.htm",
+                "source": "htv.vn",
+                "summary": "Mỹ phát tín hiệu sẵn sàng có các biện pháp cứng rắn nếu Tehran không đáp ứng điều kiện\n\n### Tai nạn đường sắt ở Ai Cập\n\nHôm nay, công nhn đường sắt bắt đầu sửa chữa đường ray sau vụ tai nạn giữa hai đoàn tàu chở khách ở phía Nam Cairo, xảy ra vào hôm qua. Tính đến hiện tại, ít nhất 7 người thiệt mạng và 125 người bị thương.\n\nMỹ phát tín hiệu hạn chế không kích Iran | Tin Thế giới 24 Giờ ngày 9/11/2026 - Ảnh 2.\n\nHiện trường vụ tai nạn đường sắt ở phía Nam Cairo, Ai Cập [...] Tin Thế giới 24 Giờ ngày 25/8/2026| Mỹ siết trừng phạt kinh tế quy mô lớn nhằm vào Iran \n\n### Tin Thế giới 24 Giờ ngày 25/8/2026| Mỹ siết trừng phạt kinh tế quy mô lớn nhằm vào Iran\n\nTin Thế giới 24 Giờ ngày 29/7/2026 | Động đất Nhật Bản: Nỗ lực tìm kiếm người mất tích \n\n### Tin Thế giới 24 Giờ ngày 29/7/2026 | Động đất Nhật Bản: Nỗ lực tìm kiếm người mất tích\n\nTin Thế giới 24 Giờ ngày 28/7/2026 | Iran và Oman đàm phán về eo biển Hormuz [...] Và còn rất nhiều thông tin nổi bật khác tại Chương trình Thế giới 24 Giờ ngày 9/11/2026.\n\n## Danh sách tập\n\nTin Thế giới 24 Giờ ngày 5/9/2026 | LHQ thông qua nghị quyết  \n\n### Tin Thế giới 24 Giờ ngày 5/9/2026 | LHQ thông qua nghị quyết \"vẽ lại\" bản đồ thế giới\n\nTin Thế giới 24 Giờ ngày 10/9/2026 | Philippines: Cháy phà ở phía Ty đảo Palawan, hàng chục người mất tích \n\n### Tin Thế giới 24 Giờ ngày 10/9/2026 | Philippines: Cháy phà ở phía Ty đảo Palawan, hàng chục người mất tích",
+                "score": 0.32662624
+              },
+              {
+                "title": "Nữ doanh nhân bị cáo buộc gián điệp, ngoại tình với Jensen Huang là ai?",
+                "url": "https://eva.vn/tin-tuc/nu-doanh-nhan-bi-cao-buoc-gian-diep-ngoai-tinh-voi-jensen-huang-la-ai-c73a688586.html",
+                "source": "eva.vn",
+                "summary": "Cuộc điều tra của Mỹ đối với Megaspeed bắt đầu từ cuối năm 2024. Một chi tiết đáng chú ý được The New York Times tiết lộ là trong chuyến thăm một trung tm dữ liệu của công ty tại Malaysia, quan chức Bộ Thương mại Mỹ phát hiện thiết bị Nvidia vẫn nằm nguyên trong các thùng đóng gói.\n\nPhát hiện này góp phần làm dấy lên nghi vấn về đích đến thực sự của những lô thiết bị AI có giá trị lớn mà Megaspeed và các công ty liên quan mua. [...] Tuy nhiên, NBC News cho biết chưa xác nhận được các thông tin do The New York Times và Financial Times công bố. Cho đến nay, chưa có cá nhn hay doanh nghiệp nào được đề cập bị truy tố liên quan đến những cáo buộc này.\n\nNhững hình ảnh được cho là Alice Huang xuất hiện bên cạnh CEO Nvidia.\n\nMegaspeed và những thương vụ chip AI hàng tỷ USD [...] Theo The New York Times, tình báo Mỹ kết luận Alice Huang là một nhn vật có liên hệ với cơ quan tình báo Trung Quốc và thu thập thông tin cho Bắc Kinh. Đáng chú ý, bà được cho là phát triển mối quan hệ thn thiết với Jensen Huang, người đứng đầu tập đoàn sản xuất chip AI hàng đầu thế giới.\n\nFinancial Times sau đó đưa tin một bản ghi nhớ của chính phủ Mỹ cho rằng Alice Huang được Bộ An ninh Quốc gia Trung Quốc (MSS) tuyển mộ và hai người có quan hệ tình cảm.",
+                "score": 0.19019738
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:20:31"
+    }
+  ]
+}
