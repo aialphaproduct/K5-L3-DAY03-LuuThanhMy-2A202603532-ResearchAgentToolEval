@@ -8,7 +8,7 @@
 ## Team
 
 - Team: Lưu Thành Mỹ
-- Members: Vũ Trí Dũng
+- Members: Vũ Trí Dũng, Nguyễn Tuấn Quang
 - Provider/model:
 
 ---
@@ -17,33 +17,40 @@
 
 ## A1. Agent này làm được gì
 
-> 1–2 câu mô tả agent dùng để làm gì (cho team khác hiểu nhanh).
+Research Agent tìm thông tin từ web, X, Hacker News, Wikipedia, GitHub và arXiv, đọc nội dung từ URL và tổng hợp thành bản tin có link nguồn. Agent có thể tra chính sách mẫu của bài lab, lưu ghi chú cục bộ, hỏi lại khi thiếu dữ kiện và xin xác nhận trước khi gửi bản tin lên Telegram.
 
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL, tổng hợp thành digest, và gửi lên Telegram khi được xác nhận."
+**Cấu hình demo** dùng prompt `v3` và model `openai/gpt-4o-mini` qua OpenRouter. Giao diện Streamlit hỗ trợ hội thoại nhiều lượt, hiển thị công cụ đã gọi và lưu transcript.
 
-**Link dùng thử (deploy):**
-
-> Dán link public để team khác mở thử ngay. Cách deploy nhanh bằng Cloudflare Tunnel xem README. Nếu deploy Vercel/Streamlit Cloud thì dán link đó.
->
-> URL:
+**Dùng thử trên máy** tại [giao diện Streamlit](http://localhost:8501) sau khi chạy `python -m streamlit run app.py` từ thư mục `starter_v0/`. Link công khai đang chờ triển khai.
 
 ## A2. Tool agent có
 
-> Liệt kê các tool agent đang dùng (gồm tool mới nhóm tự thêm). Mỗi tool 1 dòng: tên + làm được gì.
+| Công cụ | Làm được gì | Nhóm tự thêm? |
+| --- | --- | --- |
+| `clarify` | Hỏi thông tin còn thiếu hoặc xin xác nhận, sau đó chờ lượt trả lời. | Không |
+| `timeline` | Lấy bài đăng gần đây của một tài khoản X đã xác định. | Không |
+| `social_search` | Tìm bài đăng trên X theo từ khóa, ưu tiên bài mới nhất hoặc nổi bật. | Không |
+| `lookup` | Tìm thông tin hoặc tin tức trên web theo khoảng thời gian qua Tavily. | Không |
+| `fetch` | Trích nội dung của một URL cụ thể qua Firecrawl để đọc hoặc tóm tắt. | Không |
+| `format` | Trình bày kết quả đã thu thập thành bản tin Markdown có link nguồn. | Không |
+| `send` | Gửi văn bản đến kênh Telegram đã cấu hình khi lời gọi có `confirmed=true`. | Không |
+| `policy` | Tra các mục trong bộ chính sách nội bộ mẫu, kèm nguồn và ngày hiệu lực nếu có. | Không |
+| `papers` | Tìm bài nghiên cứu trên arXiv theo từ khóa, kèm tóm tắt và link bài. | Không |
+| `paper_text` | Tải PDF từ ID hoặc URL arXiv và trích văn bản từ số trang đã chọn. | Không |
+| `hn_search` | Tìm bài viết và thảo luận trên Hacker News theo chủ đề. | **Có** |
+| `wiki_search` | Tra bài và đoạn giới thiệu trên Wikipedia tiếng Việt hoặc tiếng Anh. | **Có** |
+| `repo_search` | Tìm kho mã nguồn công khai trên GitHub, sắp theo sao, lượt fork hoặc lần cập nhật. | **Có** |
+| `notes` | Lưu và xem lại ghi chú trong tệp `notes/notes.json` trên máy chạy agent. | **Có** |
 
-| Tên tool | Làm được gì                            | Tool mới nhóm thêm? |
-| -------- | -------------------------------------- | ------------------- |
-| clarify  | hỏi lại người dùng khi thiếu thông tin | không               |
-|          |                                        |                     |
-|          |                                        |                     |
+Hai công cụ X cần cấu hình RapidAPI. Tính năng gửi cần cấu hình bot và kênh Telegram.
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
+1. Tìm 3 tin về AI agent trên web trong 24 giờ qua và tóm tắt thành bản tin ngắn có link nguồn.
+2. Tìm 3 bài thảo luận trên Hacker News về model AI chạy trên máy cá nhân.
+3. Tra Wikipedia tiếng Việt để giải thích học tăng cường là gì và dẫn link bài viết.
+4. Tìm 3 repository GitHub về đánh giá AI agent, ưu tiên kho có nhiều sao.
+5. Lưu ghi chú “Demo Day 03 cần một bản tin có nguồn”. Ở lượt sau, hỏi “Cho tôi xem các ghi chú đã lưu”.
 
 ---
 
