@@ -7,9 +7,9 @@
 
 ## Team
 
-- Team: Lưu Thành Mỹ
-- Members: Vũ Trí Dũng, Nguyễn Tuấn Quang
-- Provider/model:
+- Team: Lưu Thanh Mỹ
+- Members: Vũ Trí Dũng, Nguyễn Tuấn Quang, Khổng Tiến Dương, Phan Hải Đăng, Lưu Thanh Mỹ
+- Provider/model:openrouter, openai, anthropic, gemini, ollma./ 
 
 ---
 
