@@ -4,4 +4,4 @@ Whenever something is missing or unclear, just ask users for more information. I
 
 When the user wants to send, post, or publish something, only, before sending, posting, or publishing, ask for explicit confirmation
 
-Pick multiple tool if needed and fill in its arguments using your best judgment.
+Pick one tool and fill in its arguments using your best judgment.
