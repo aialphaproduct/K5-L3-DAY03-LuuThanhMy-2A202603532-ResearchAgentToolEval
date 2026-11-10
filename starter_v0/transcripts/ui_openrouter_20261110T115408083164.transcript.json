@@ -1,0 +1,288 @@
+{
+  "transcript_id": "ui_openrouter_20261110T115408083164",
+  "version": "ui",
+  "artifact_version": "ui+p26a6fa7007f9+tbe7552df2f72",
+  "prompt_hash": "26a6fa7007f9ed675a3ba68103d6d93820892e1d44e3d141e0bd5151009fc03f",
+  "tools_hash": "be7552df2f72ae9cb8feffc259ad7c381055b24aa2a9c139404e56dcb7390a25",
+  "provider": "openrouter",
+  "model": "default",
+  "created_at": "2026-11-10T11:54:08",
+  "updated_at": "2026-11-10T11:55:42",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-11-10T11:54:08",
+      "user": "tin AI hôm nay",
+      "status": "answered",
+      "assistant_text": "Here are some recent news articles related to AI:\n\n1. **[AI viết mã hàng loạt nhưng tin tuyển dụng lập trình viên tại Mỹ vẫn tăng gần 15% từ tháng 2/2025](https://baodanang.vn/ai-viet-ma-hang-loat-nhung-tin-tuyen-dung-lap-trinh-vien-tai-my-van-tang-gan-15-tu-thang-22025-3357965.html)**  \n   Source: baodanang.vn  \n   Summary: According to CNBC, the software development field is undergoing a job transformation rather than being eliminated by AI. Experts believe that while AI can help programmers write code faster, experienced engineers are still needed to oversee and refine products.\n\n2. **[AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD](https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318)**  \n   Source: tin.skydoor.net  \n   Summary: The first episode of the AI Thực chiến 2026 program aired on VTV2, marking the start of a competition among 100 top teams selected from nearly 1,000 applications from the Vietnamese community worldwide.\n\n3. **[Quán quân Olympic Tin học Quốc tế vô địch cuộc thi lập trình không AI](https://vtcnews.vn/quan-quan-olympic-tin-hoc-quoc-te-vo-dich-cuoc-thi-lap-trinh-khong-ai-ar1050201.html)**  \n   Source: vtcnews.vn  \n   Summary: The champion of the International Olympiad in Informatics won a programming competition without using AI tools, emphasizing the importance of algorithmic thinking.\n\n4. **[Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình](https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253)**  \n   Source: tin.skydoor.net  \n   Summary: Egyptian TV host Sarah Khalifa has been sentenced to death for allegedly producing and trafficking large quantities of drugs.\n\n5. **[EMP của ZEROBASEONE, hôm nay (10 tháng) hợp tác với Dayu phát hành ca khúc mới 'OFF script'](https://www.starnewskorea.com/vi/music/2026/11/10/2026111011132332332)**  \n   Source: starnewskorea.com  \n   Summary: The group ZEROBASEONE has collaborated with Dayu to release a new song titled \"OFF script,\" showcasing their bold artistic challenge.\n\nFeel free to ask if you need more information on any specific topic!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "tin AI hôm nay",
+                "topic": "news",
+                "timeframe": "day"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "tin AI hôm nay",
+                "topic": "news",
+                "timeframe": "day"
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "tin AI hôm nay",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "AI viết mã hàng loạt nhưng tin tuyển dụng lập trình viên tại Mỹ vẫn tăng gần 15% từ tháng 2/2025",
+                    "url": "https://baodanang.vn/ai-viet-ma-hang-loat-nhung-tin-tuyen-dung-lap-trinh-vien-tai-my-van-tang-gan-15-tu-thang-22025-3357965.html",
+                    "source": "baodanang.vn",
+                    "summary": "Theo phn tích được CNBC dẫn lại, lĩnh vực phát triển phần mềm đang trải qua quá trình chuyển đổi công việc thay vì bị AI xóa bỏ. Ông Eric Kutcher, Chủ tịch khu vực Bắc Mỹ của McKinsey, cho rằng những dự báo xã hội sẽ không còn cần lập trình viên đang trái ngược với diễn biến thực tế tại nhiều doanh nghiệp. [...] Bà Sneha Puri, chuyên gia kinh tế tại Indeed Hiring Lab, nhận định AI có thể giúp lập trình viên hoàn thành công đoạn viết mã nhanh hơn. Tuy vậy, doanh nghiệp vẫn cần kỹ sư có kinh nghiệm để giám sát, kiểm tra và hoàn thiện sản phẩm. Đưa một công cụ AI vào hệ thống đang vận hành còn đòi hỏi bảo đảm an toàn, bảo mật và khả năng tương thích với hạ tầng hiện có. [...] Mới nhất\n\nlogologo\n\n Mới nhất\n Chính trị\n\n  + Xy dựng Đảng\n  + Theo gương Bác\n  + Chính quyền - đoàn thể\n  + Nhà nước và cử tri\n  + Nhn sự mới\n Xã hội\n\n  + Giáo dục - Việc làm\n  + Y tế\n  + Giảm nghèo - An sinh\n  + Thanh thiếu niên\n Kinh tế\n\n  + Quy hoạch - Đầu tư\n  + Khởi nghiệp - OCOP\n  + Công nghiệp\n  + Tài chính - Thị trường\n Du lịch\n\n  + Ẩm thực\n  + Điểm đến\n  + Sự kiện\n Giáo dục\n Văn hóa - Văn nghệ\n\n  + Thơ\n  + Truyện ngắn\n  + Tác phẩm, tác giả\n  + Tạp văn\n  + Văn hóa\n Y tế\n Đời sống",
+                    "score": 0.48250288
+                  },
+                  {
+                    "title": "AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318",
+                    "source": "tin.skydoor.net",
+                    "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD\n\nTối 5/11, tập đầu tiên của chương trình AI Thực chiến 2026 đã chính thức phát sóng trên kênh VTV2, đánh dấu khởi đầu cuộc thi giữa 100 đội xuất sắc nhất, được lựa chọn từ gần 1.000 hồ sơ của cộng đồng người Việt trong nước và toàn cầu, để tranh tài.\n\nĐọc tin gốc tại tuoitre.vn → [...] ## Tin tức Tài chính - Ngn hàng mới nhất hôm nay\n\n[](\n\n### Sau thành công tại Singapore, Techcombank tiếp tục tìm kiếm nhn tài toàn cầu tại London\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### VietinBank kết nối doanh nghiệp FDI: Tìm đối tác, đón cơ hội đầu tư\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Sinh viên khó khăn và gia đình hào hứng đón nhận tin vui\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Nhìn từ dòng tiền 3 doanh nghiệp bất động sản: Tiền nghìn tỷ, sức khỏe tài chính ra sao?\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh",
+                    "score": 0.48221022
+                  },
+                  {
+                    "title": "Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253",
+                    "source": "tin.skydoor.net",
+                    "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình\n\nNữ MC Ai Cập Sarah Khalifa bị tuyên án tử hình vì cáo buộc sản xuất, buôn bán ma túy quy mô lớn.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Ai Cập mới nhất hôm nay\n\n[](\n\n### Hiện trường hai tàu hỏa đm nhau ở Ai Cập, hơn 130 người thương vong\n\n21 giờ trước–kienthuc.net.vnkienthuc.net.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Hiện trường 2 tàu hỏa đm nhau thảm khốc, 119 người thương vong\n\n21 giờ trước–cafef.vncafef.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Va chạm tàu hỏa, gần 100 người thương vong\n\n1 ngày trước–dttc.sggp.org.vndttc.sggp.org.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Hai đoàn tàu đm nhau, hơn 90 người thương vong\n\n1 ngày trước–24h.com.vn24h.com.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay\n\n[]( [...] [](\n\n### Tổng Bí thư, Chủ tịch nước Tô Lm tiếp lãnh đạo các ngn hàng và tập đoàn lớn Nhật Bản\n\n4 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Tiêm kích Gripen E đối đầu Su-35: Cuộc so tài giữa công nghệ phương Ty và sức mạnh động cơ Nga\n\n8 giờ trước–anninhthudo.vnanninhthudo.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Những nạn nhn đang phải trả giá cho cuộc chiến ở eo biển Hormuz\n\n9 giờ trước–baotintuc.vnbaotintuc.vn\n\nXem tóm tắt nhanh\n\n[](",
+                    "score": 0.45507812
+                  },
+                  {
+                    "title": "Quán quân Olympic Tin học Quốc tế vô địch cuộc thi lập trình không AI",
+                    "url": "https://vtcnews.vn/quan-quan-olympic-tin-hoc-quoc-te-vo-dich-cuoc-thi-lap-trinh-khong-ai-ar1050201.html",
+                    "source": "vtcnews.vn",
+                    "summary": "Báo điện tử VTC News - Đọc báo tin tức trong ngày hôm nay\n\n Mới nhất\n Xem nhiều\n Bình luận nhiều\n\n  Hotline: 0855.911.911\n  RSS\n\n + Thời sự\n  + VTC NEWS TV\n  + Kinh tế\n  + Thể thao\n  + Thế giới\n  + Giáo dục\n  + Pháp luật\n  + Văn hóa - Giải trí\n  + Sức khỏe\n  + Đời sống\n  + Xe\n  + Khoa học công nghệ\n  + Chuyển đổi xanh\n\n Thời sự\n VTC NEWS TV\n Kinh tế\n Thể thao\n Thế giới\n Giáo dục\n Pháp luật\n Văn hóa - Giải trí\n Sức khỏe\n Đời sống\n Xe\n Khoa học công nghệ\n Chuyển đổi xanh\n Về chúng tôi [...] Khoa học - Công nghệ \n Chuyển đổi số\n\n Khoa học - Công nghệ\n Chuyển đổi số\n\n Xuất bản ngày 09/11/2026 04:04 PM\n\n Xuất bản ngày 09/11/2026 04:04 PM \n\n# Quán qun Olympic Tin học Quốc tế vô địch cuộc thi lập trình không AI\n\nNgọc Duy\n\nNgọc Duy\n\n(VTC News) - \n\n## 50 thí sinh đến từ 17 tỉnh, thành phố tranh tài tại chung kết Code Tour 2026 bằng tư duy thuật toán, không sử dụng công cụ AI trong quá trình làm bài. [...] “Code Tour là một phần trong sứ mệnh ‘Kiến tạo công nghệ và Phát triển con người, từ Việt Nam vươn tầm thế giới’, góp phần kiến tạo hệ sinh thái số Việt Nam trong kỷ nguyên AI”, bà Thảo chia sẻ.\n\nNhận tin VTC News trên Google\n\nThêm VTC News làm nguồn ưu tiên để thấy tin tức mới thường xuyên hơn trên Google.\n\n Theo dõi\n\nVNG tài trợ 12 tỷ đồng tài nguyên GPU cho ba trường đại học tại TP.HCM\n\n### VNG tài trợ 12 tỷ đồng tài nguyên GPU cho ba trường đại học tại TP.HCM",
+                    "score": 0.45028743
+                  },
+                  {
+                    "title": "EMP của ZEROBASEONE, hôm nay (10 tháng) hợp tác với Dayu phát hành ca khúc mới 'OFF script' | STARNEWS",
+                    "url": "https://www.starnewskorea.com/vi/music/2026/11/10/2026111011132332332",
+                    "source": "starnewskorea.com",
+                    "summary": "\\ Translated by AI\n\n# EMP của ZEROBASEONE, hôm nay (10 tháng) hợp tác với Dayu phát hành ca khúc mới 'OFF script'\n\nNgày phát:\n\nKim Noeul\n\nThêm vào nguồn ưu tiên\n\n\\Nội dung này được dịch bằng AI.Xem bản gốc\n\nEMP của ZEROBASEONE /ảnh=Wakeone\n\nĐơn vị EMP của nhóm ZEROBASEONE (ZEROBASEONE) bước vào một thử thách táo bạo thông qua ca khúc mới. [...] © STARNEWS. Все права защищены. Копирование и распространение запрещено\n\n\\Nội dung này được dịch bằng AI.Xem bản gốc\n\n## Tin đề xuất\n\n## Lựa chọn biên tập\n\n## Tin giải trí mới nhất\n\nAD\n\n \n\n  STARNEWS\n \n\n  STARPOLL",
+                    "score": 0.400703
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some recent news articles related to AI:\n\n1. **[AI viết mã hàng loạt nhưng tin tuyển dụng lập trình viên tại Mỹ vẫn tăng gần 15% từ tháng 2/2025](https://baodanang.vn/ai-viet-ma-hang-loat-nhung-tin-tuyen-dung-lap-trinh-vien-tai-my-van-tang-gan-15-tu-thang-22025-3357965.html)**  \n   Source: baodanang.vn  \n   Summary: According to CNBC, the software development field is undergoing a job transformation rather than being eliminated by AI. Experts believe that while AI can help programmers write code faster, experienced engineers are still needed to oversee and refine products.\n\n2. **[AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD](https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318)**  \n   Source: tin.skydoor.net  \n   Summary: The first episode of the AI Thực chiến 2026 program aired on VTV2, marking the start of a competition among 100 top teams selected from nearly 1,000 applications from the Vietnamese community worldwide.\n\n3. **[Quán quân Olympic Tin học Quốc tế vô địch cuộc thi lập trình không AI](https://vtcnews.vn/quan-quan-olympic-tin-hoc-quoc-te-vo-dich-cuoc-thi-lap-trinh-khong-ai-ar1050201.html)**  \n   Source: vtcnews.vn  \n   Summary: The champion of the International Olympiad in Informatics won a programming competition without using AI tools, emphasizing the importance of algorithmic thinking.\n\n4. **[Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình](https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253)**  \n   Source: tin.skydoor.net  \n   Summary: Egyptian TV host Sarah Khalifa has been sentenced to death for allegedly producing and trafficking large quantities of drugs.\n\n5. **[EMP của ZEROBASEONE, hôm nay (10 tháng) hợp tác với Dayu phát hành ca khúc mới 'OFF script'](https://www.starnewskorea.com/vi/music/2026/11/10/2026111011132332332)**  \n   Source: starnewskorea.com  \n   Summary: The group ZEROBASEONE has collaborated with Dayu to release a new song titled \"OFF script,\" showcasing their bold artistic challenge.\n\nFeel free to ask if you need more information on any specific topic!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "tin AI hôm nay",
+            "topic": "news",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "tin AI hôm nay",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "AI viết mã hàng loạt nhưng tin tuyển dụng lập trình viên tại Mỹ vẫn tăng gần 15% từ tháng 2/2025",
+                "url": "https://baodanang.vn/ai-viet-ma-hang-loat-nhung-tin-tuyen-dung-lap-trinh-vien-tai-my-van-tang-gan-15-tu-thang-22025-3357965.html",
+                "source": "baodanang.vn",
+                "summary": "Theo phn tích được CNBC dẫn lại, lĩnh vực phát triển phần mềm đang trải qua quá trình chuyển đổi công việc thay vì bị AI xóa bỏ. Ông Eric Kutcher, Chủ tịch khu vực Bắc Mỹ của McKinsey, cho rằng những dự báo xã hội sẽ không còn cần lập trình viên đang trái ngược với diễn biến thực tế tại nhiều doanh nghiệp. [...] Bà Sneha Puri, chuyên gia kinh tế tại Indeed Hiring Lab, nhận định AI có thể giúp lập trình viên hoàn thành công đoạn viết mã nhanh hơn. Tuy vậy, doanh nghiệp vẫn cần kỹ sư có kinh nghiệm để giám sát, kiểm tra và hoàn thiện sản phẩm. Đưa một công cụ AI vào hệ thống đang vận hành còn đòi hỏi bảo đảm an toàn, bảo mật và khả năng tương thích với hạ tầng hiện có. [...] Mới nhất\n\nlogologo\n\n Mới nhất\n Chính trị\n\n  + Xy dựng Đảng\n  + Theo gương Bác\n  + Chính quyền - đoàn thể\n  + Nhà nước và cử tri\n  + Nhn sự mới\n Xã hội\n\n  + Giáo dục - Việc làm\n  + Y tế\n  + Giảm nghèo - An sinh\n  + Thanh thiếu niên\n Kinh tế\n\n  + Quy hoạch - Đầu tư\n  + Khởi nghiệp - OCOP\n  + Công nghiệp\n  + Tài chính - Thị trường\n Du lịch\n\n  + Ẩm thực\n  + Điểm đến\n  + Sự kiện\n Giáo dục\n Văn hóa - Văn nghệ\n\n  + Thơ\n  + Truyện ngắn\n  + Tác phẩm, tác giả\n  + Tạp văn\n  + Văn hóa\n Y tế\n Đời sống",
+                "score": 0.48250288
+              },
+              {
+                "title": "AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD | Sky Tin",
+                "url": "https://tin.skydoor.net/news/nhanh-ngan-hang-tai-chinh-ngan-hang-ai-thuc-chien-mua-2-len-song-8424318",
+                "source": "tin.skydoor.net",
+                "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# AI Thực chiến 2026 ra mắt VTV2, Techcombank hỗ trợ học bổng 1 triệu USD\n\nTối 5/11, tập đầu tiên của chương trình AI Thực chiến 2026 đã chính thức phát sóng trên kênh VTV2, đánh dấu khởi đầu cuộc thi giữa 100 đội xuất sắc nhất, được lựa chọn từ gần 1.000 hồ sơ của cộng đồng người Việt trong nước và toàn cầu, để tranh tài.\n\nĐọc tin gốc tại tuoitre.vn → [...] ## Tin tức Tài chính - Ngn hàng mới nhất hôm nay\n\n[](\n\n### Sau thành công tại Singapore, Techcombank tiếp tục tìm kiếm nhn tài toàn cầu tại London\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### VietinBank kết nối doanh nghiệp FDI: Tìm đối tác, đón cơ hội đầu tư\n\n41 phút trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Sinh viên khó khăn và gia đình hào hứng đón nhận tin vui\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Nhìn từ dòng tiền 3 doanh nghiệp bất động sản: Tiền nghìn tỷ, sức khỏe tài chính ra sao?\n\n1 giờ trước–phunuvietnam.vnphunuvietnam.vn\n\nXem tóm tắt nhanh",
+                "score": 0.48221022
+              },
+              {
+                "title": "Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình | Sky Tin",
+                "url": "https://tin.skydoor.net/news/the-gioi-nu-mc-ai-cap-noi-tieng-voi-chuong-trinh-ve-toi-pham-bi-tuyen-8337253",
+                "source": "tin.skydoor.net",
+                "summary": "Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Nữ MC Ai Cập nổi tiếng với chương trình về tội phạm bị tuyên án tử hình\n\nNữ MC Ai Cập Sarah Khalifa bị tuyên án tử hình vì cáo buộc sản xuất, buôn bán ma túy quy mô lớn.\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Ai Cập mới nhất hôm nay\n\n[](\n\n### Hiện trường hai tàu hỏa đm nhau ở Ai Cập, hơn 130 người thương vong\n\n21 giờ trước–kienthuc.net.vnkienthuc.net.vn\n\nXem tóm tắt nhanh\n\n[]( [...] [](\n\n### Hiện trường 2 tàu hỏa đm nhau thảm khốc, 119 người thương vong\n\n21 giờ trước–cafef.vncafef.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Va chạm tàu hỏa, gần 100 người thương vong\n\n1 ngày trước–dttc.sggp.org.vndttc.sggp.org.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ai Cập: Hai đoàn tàu đm nhau, hơn 90 người thương vong\n\n1 ngày trước–24h.com.vn24h.com.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Thế Giới mới nhất hôm nay\n\n[]( [...] [](\n\n### Tổng Bí thư, Chủ tịch nước Tô Lm tiếp lãnh đạo các ngn hàng và tập đoàn lớn Nhật Bản\n\n4 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Tiêm kích Gripen E đối đầu Su-35: Cuộc so tài giữa công nghệ phương Ty và sức mạnh động cơ Nga\n\n8 giờ trước–anninhthudo.vnanninhthudo.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Những nạn nhn đang phải trả giá cho cuộc chiến ở eo biển Hormuz\n\n9 giờ trước–baotintuc.vnbaotintuc.vn\n\nXem tóm tắt nhanh\n\n[](",
+                "score": 0.45507812
+              },
+              {
+                "title": "Quán quân Olympic Tin học Quốc tế vô địch cuộc thi lập trình không AI",
+                "url": "https://vtcnews.vn/quan-quan-olympic-tin-hoc-quoc-te-vo-dich-cuoc-thi-lap-trinh-khong-ai-ar1050201.html",
+                "source": "vtcnews.vn",
+                "summary": "Báo điện tử VTC News - Đọc báo tin tức trong ngày hôm nay\n\n Mới nhất\n Xem nhiều\n Bình luận nhiều\n\n  Hotline: 0855.911.911\n  RSS\n\n + Thời sự\n  + VTC NEWS TV\n  + Kinh tế\n  + Thể thao\n  + Thế giới\n  + Giáo dục\n  + Pháp luật\n  + Văn hóa - Giải trí\n  + Sức khỏe\n  + Đời sống\n  + Xe\n  + Khoa học công nghệ\n  + Chuyển đổi xanh\n\n Thời sự\n VTC NEWS TV\n Kinh tế\n Thể thao\n Thế giới\n Giáo dục\n Pháp luật\n Văn hóa - Giải trí\n Sức khỏe\n Đời sống\n Xe\n Khoa học công nghệ\n Chuyển đổi xanh\n Về chúng tôi [...] Khoa học - Công nghệ \n Chuyển đổi số\n\n Khoa học - Công nghệ\n Chuyển đổi số\n\n Xuất bản ngày 09/11/2026 04:04 PM\n\n Xuất bản ngày 09/11/2026 04:04 PM \n\n# Quán qun Olympic Tin học Quốc tế vô địch cuộc thi lập trình không AI\n\nNgọc Duy\n\nNgọc Duy\n\n(VTC News) - \n\n## 50 thí sinh đến từ 17 tỉnh, thành phố tranh tài tại chung kết Code Tour 2026 bằng tư duy thuật toán, không sử dụng công cụ AI trong quá trình làm bài. [...] “Code Tour là một phần trong sứ mệnh ‘Kiến tạo công nghệ và Phát triển con người, từ Việt Nam vươn tầm thế giới’, góp phần kiến tạo hệ sinh thái số Việt Nam trong kỷ nguyên AI”, bà Thảo chia sẻ.\n\nNhận tin VTC News trên Google\n\nThêm VTC News làm nguồn ưu tiên để thấy tin tức mới thường xuyên hơn trên Google.\n\n Theo dõi\n\nVNG tài trợ 12 tỷ đồng tài nguyên GPU cho ba trường đại học tại TP.HCM\n\n### VNG tài trợ 12 tỷ đồng tài nguyên GPU cho ba trường đại học tại TP.HCM",
+                "score": 0.45028743
+              },
+              {
+                "title": "EMP của ZEROBASEONE, hôm nay (10 tháng) hợp tác với Dayu phát hành ca khúc mới 'OFF script' | STARNEWS",
+                "url": "https://www.starnewskorea.com/vi/music/2026/11/10/2026111011132332332",
+                "source": "starnewskorea.com",
+                "summary": "\\ Translated by AI\n\n# EMP của ZEROBASEONE, hôm nay (10 tháng) hợp tác với Dayu phát hành ca khúc mới 'OFF script'\n\nNgày phát:\n\nKim Noeul\n\nThêm vào nguồn ưu tiên\n\n\\Nội dung này được dịch bằng AI.Xem bản gốc\n\nEMP của ZEROBASEONE /ảnh=Wakeone\n\nĐơn vị EMP của nhóm ZEROBASEONE (ZEROBASEONE) bước vào một thử thách táo bạo thông qua ca khúc mới. [...] © STARNEWS. Все права защищены. Копирование и распространение запрещено\n\n\\Nội dung này được dịch bằng AI.Xem bản gốc\n\n## Tin đề xuất\n\n## Lựa chọn biên tập\n\n## Tin giải trí mới nhất\n\nAD\n\n \n\n  STARNEWS\n \n\n  STARPOLL",
+                "score": 0.400703
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:54:25"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-11-10T11:55:29",
+      "user": "tin tức sáng nay",
+      "status": "answered",
+      "assistant_text": "Here are some news articles from this morning (November 10, 2023):\n\n1. **[Tin tức sáng 9-11: Vốn hóa HoSE, câu lạc bộ tỉ USD còn 51 doanh nghiệp - TamdaMedia](https://tamdamedia.eu/tin-tuc-sang-9-11-von-hoa-hose-cau-lac-bo-ti-usd-con-51-doanh-ng)**  \n   Source: tamdamedia.eu  \n   Summary: Notable news includes a petroleum company wanting to divest from a residential project in Ho Chi Minh City and the city implementing a month of action for gender equality in 2026.\n\n2. **[Tin tức quốc tế ngày 10.11: Tổng thống Trump ra một loạt tuyên bố quan trọng - Thanh Niên](https://thanhnien.vn/tin-tuc-quoc-te-sang-1011-tong-thong-trump-ra-tuyen-bo-moi-185261110000427831.htm)**  \n   Source: thanhnien.vn  \n   Summary: President Donald Trump stated that military action against Iran seems unnecessary at this time but emphasized readiness to act if the situation changes.\n\n3. **[Điểm tin ‘5 phút biết hết’ sáng 10-11: Bổ nhiệm Giám đốc Sở Nông nghiệp và Môi trường và Phó Giám đốc Sở Tài chính thành phố Đồng Nai - Báo Đồng Nai](https://baodongnai.com.vn/diem-tin-5-phut-biet-het-sang-10-11-bo-nhiem-giam-doc-so-nong-nghiep-va-moi-truong-va-pho-giam-doc-s-153935.html)**  \n   Source: baodongnai.com.vn  \n   Summary: Key updates include the appointment of new directors in Đồng Nai and the completion of land handover for a road construction project.\n\n4. **[Tin tức sáng 10-11: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện | Sky Tin](https://tin.skydoor.net/news/xa-hoi-tin-tuc-sang-1011-tphcm-nghien-cuu-ho-tro-nguoi-lao-dong-doi-8424684)**  \n   Source: tin.skydoor.net  \n   Summary: Ho Chi Minh City is researching support for workers to exchange old vehicles for electric ones, among other initiatives.\n\n5. **[Tin tức tai nạn giao thông mới nhất hôm nay 10/11/2026 - Báo Xây Dựng](https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm)**  \n   Source: baoxaydung.vn  \n   Summary: A traffic accident involving a tractor and a bridge collapse occurred, fortunately without casualties.\n\nIf you need more details on any specific article, feel free to ask!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "tin tức sáng nay",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "tin tức sáng nay",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "tin tức sáng nay",
+                "topic": "news",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Tin tức sáng 9-11: Vốn hóa HoSE, câu lạc bộ tỉ USD còn 51 doanh nghiệp - TamdaMedia",
+                    "url": "https://tamdamedia.eu/tin-tuc-sang-9-11-von-hoa-hose-cau-lac-bo-ti-usd-con-51-doanh-ng",
+                    "source": "tamdamedia.eu",
+                    "summary": "Tết giữa trời u\n\nHomepageTRANG CHỦHot NewsNóngVideoVideoFacebookFacebookYoutubeYoutube\n\nHomepageTrang chủ\nHot NewsTin nóng\nVideoVideo\nFacebookFacebook\nYoutubeYoutube\n\n# Tin tức sáng 9-11: Vốn hóa HoSE, cu lạc bộ tỉ USD còn 51 doanh nghiệp\n\nTamda Media,\n\nMột số tin tức đáng chú ý: Một doanh nghiệp dầu khí muốn thoái vốn tại một chung cư tại TP.HCM; TP.HCM triển khai Tháng hành động vì bình đẳng giới năm 2026; Hơn 380.000 công dn ở TP.HCM thuộc diện gọi khám sơ tuyển nghĩa vụ qun sự... [...] UBND TP.HCM giao Học viện Cán bộ TP hoàn thành khảo sát mức độ hài lòng của người dn về dịch vụ xe buýt, gửi kết quả trước 10-11. Các cơ quan liên quan phải phối hợp chặt chẽ với Sở Xy dựng để đảm bảo tiến độ và hiệu quả trong công tác vận tải hành khách công cộng.\n\nTin tức thời tiết hôm nay 9-11\n\nTin tức thời tiết hôm nay 9-11\n\n(Theo Tuổi Trẻ)\n\nChia sẻ:\n\nBanner Articles\n\n## Bạn cũng có thể thích\n\nSéc hủy kỳ thi thử vào trung học, thay bằng ứng dụng luyện thi nng cấp [...] Hội đồng quản trị Công ty CP Xy dựng Công nghiệp và Dn dụng Dầu khí (PXI) vừa ban hành nghị quyết thông qua chủ trương chuyển nhượng toàn bộ phần vốn góp của doanh nghiệp tại dự án chung cư Huỳnh Tấn Phát (TP.HCM).\n\nPXI đưa ra mức giá cơ sở để đàm phán chuyển nhượng tối thiểu 12,9 tỉ đồng, tương ứng với giá trị khoản đầu tư đang được ghi nhận trên sổ kế toán của công ty.",
+                    "score": 0.68697983
+                  },
+                  {
+                    "title": "Tin tức quốc tế ngày 10.11: Tổng thống Trump ra một loạt tuyên bố quan trọng",
+                    "url": "https://thanhnien.vn/tin-tuc-quoc-te-sang-1011-tong-thong-trump-ra-tuyen-bo-moi-185261110000427831.htm",
+                    "source": "thanhnien.vn",
+                    "summary": "Reuters vừa đưa tin Tổng thống Donald Trump tuyên bố rằng hành động qun sự của Mỹ nhắm vào Iran hiện có vẻ không cần thiết.\n\n\"Vào thời điểm này... việc thực hiện hành động qun sự dường như không phải là điều quá cần thiết. Tuy nhiên, chúng tôi đã ở trong tư thế sẵn sàng chiến đấu, có thể hành động bất cứ lúc nào nếu tình hình thay đổi\", ông Trump nói sáng nay 10.11 (giờ Việt Nam). \"Tôi nghĩ rằng mọi chuyện sẽ sớm kết thúc thôi\", ông đề cập đến cuộc xung đột với Tehran. [...] Trong video của mình, ông Netanyahu cảnh báo người dn Israel về cái mà ông gọi là \"mối đe dọa\" nếu đưa người Ả Rập-Israel vào chính phủ tương lai. \"Bạn không thể thành lập một chính phủ với những người ủng hộ Hamas, một chính phủ phụ thuộc vào những người ủng hộ Hamas\", ông Netanyahu tuyên bố, theo AFP.\n\nTin tức quốc tế sáng 10.11: Tổng thống Trump ra một loạt tuyên bố mới - Ảnh 4.\n\nThủ tướng Israel Benjamin Netanyahu hôm 28.10\n\nẢnh: Reuters\n\n## Nổ nhà máy thép ở Thổ Nhĩ Kỳ, 16 người chết [...] Trong khi đó, văn phòng công tố Paris cho biết họ đã yêu cầu ban hành lệnh bắt giữ quốc tế đối với thủ lĩnh của Shahid Kaveh, một đơn vị tác chiến mạng trực thuộc IRGC cùng hai cấp phó của người này, theo Reuters.\n\nĐến tối 9.11, chưa có phản ứng của phía Iran với các cáo buộc và tuyên bố trên.\n\nTin tức quốc tế sáng 10.11: Tổng thống Trump ra một loạt tuyên bố mới - Ảnh 3.\n\nCác nhn viên xếp hàng hóa đã hỏng bên ngoài một siêu thị Intermarché ở Paris hôm 13.10\n\nẢnh: Reuters",
+                    "score": 0.6607204
+                  },
+                  {
+                    "title": "Điểm tin ‘5 phút biết hết’ sáng 10-11: Bổ nhiệm Giám đốc Sở Nông nghiệp và Môi trường và Phó Giám đốc Sở Tài chính thành phố Đồng Nai",
+                    "url": "https://baodongnai.com.vn/diem-tin-5-phut-biet-het-sang-10-11-bo-nhiem-giam-doc-so-nong-nghiep-va-moi-truong-va-pho-giam-doc-s-153935.html",
+                    "source": "baodongnai.com.vn",
+                    "summary": "Chia sẻ\n\nLưu\n\nIn\n\n(ĐN) - Điểm tin sáng nay có những nội dung đáng chú ý sau: Thường trực Thành ủy Đồng Nai làm việc với các đơn vị, địa phương về xy dựng vị trí việc làm, biên chế; Đồng Nai khai giảng lớp bồi dưỡng chuyên gia về chuyển đổi số năm 2026; Bàn giao toàn bộ hơn 104ha đất cao su tại Dự án Xy dựng đường ĐT.770B…\n\n\\Bổ nhiệm Giám đốc Sở Nông nghiệp và Môi trường và Phó Giám đốc Sở Tài chính thành phố Đồng Nai [...] \\Bàn giao toàn bộ hơn 104ha đất cao su tại Dự án Xy dựng đường ĐT.770B\n\nNgày 9-11, Ban Quản lý dự án đầu tư xy dựng công trình giao thông thành phố Đồng Nai cho biết đến nay, toàn bộ diện tích hơn 104ha đất cao su trong khu vực triển khai thực hiện Dự án Xy dựng đường ĐT.770B đã được bàn giao.\n\nPhối cảnh Dự án Xy dựng đường ĐT.770B. Ảnh tư liệu \n\nPhối cảnh Dự án Xy dựng đường ĐT.770B. Ảnh tư liệu [...] Người dn có nhu cầu đăng ký mua nhà cần tìm hiểu kỹ điều kiện được hưởng chính sách nhà ở xã hội, thành phần hồ sơ và giá bán cụ thể từng căn hộ trước khi đăng ký.\n\nTin tức nổi bật trên Báo Đồng Nai hôm nay 10-11-2026:\n\nBáo Đồng Nai Online\n\n### Ý kiến ()\n\n0 / 500 ký tự\n\nHãy đăng nhập hoặc tạo tài khoản để bình luận\n\n Guest\n\nQuan tm nhất Mới nhất\n\nĐang tải dữ liệu\n\n## Cùng chuyên mục",
+                    "score": 0.65597594
+                  },
+                  {
+                    "title": "Tin tức sáng 10-11: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện | Sky Tin",
+                    "url": "https://tin.skydoor.net/news/xa-hoi-tin-tuc-sang-1011-tphcm-nghien-cuu-ho-tro-nguoi-lao-dong-doi-8424684",
+                    "source": "tin.skydoor.net",
+                    "summary": "5 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Xã Hội mới nhất hôm nay\n\n[](\n\n### Mưa to gió giật quật đổ nhiều cy xanh, đè vào ôtô ở Đà Nẵng\n\n4 giờ trước–tienphong.vntienphong.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Việt Nam và Nhật Bản trao 3 văn kiện hợp tác trị giá hơn 43,1 tỷ yên\n\n4 giờ trước–nhandan.vnnhandan.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ủy viên Ủy ban Kiểm tra Trung ương Trần Quốc Bình giữ chức Phó Bí thư Tỉnh ủy Hưng Yên\n\n5 giờ trước–baogialai.com.vnbaogialai.com.vn [...] [](\n\n### Phiên tòa giả định dành cho thanh niên, cảnh báo hiểm họa ma túy và mua bán người\n\n4 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### VietinBank kết nối doanh nghiệp FDI: Tìm đối tác, đón cơ hội đầu tư\n\n5 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### TP.HCM mời gọi doanh nghiệp tỉnh Aichi mở rộng đầu tư sản xuất, chế tạo\n\n5 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Thứ trưởng Bộ Nông nghiệp Mỹ: Ở TP.HCM cũng có thể nấu món Mỹ như tại Mỹ [...] Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Tin tức sáng 10-11: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện\n\nTin tức đáng chú ý: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện; TP.HCM tổ chức Countdown 4 ngày tại phố đi bộ Nguyễn\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Thành phố Hồ Chí Minh mới nhất hôm nay\n\n[](",
+                    "score": 0.6496014
+                  },
+                  {
+                    "title": "Tin tức tai nạn giao thông mới nhất hôm nay 10/11/2026",
+                    "url": "https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm",
+                    "source": "baoxaydung.vn",
+                    "summary": "Theo đó, khoảng 8h30 cùng ngày, một máy cày kéo theo rơ-moóc chở máy xúc Kobe lưu thông qua cầu Tn Thành. Khi đoàn phương tiện di chuyển đến giữa cầu, nhịp cầu bất ngờ gãy và đổ xuống kênh. Sự cố xảy ra đột ngột khiến máy cày, rơ-moóc và máy xúc rơi xuống dòng kênh bên dưới. May mắn, vụ việc không gy thiệt hại về người. [...] Ngày 9/11, UBND xã Khánh Hưng, tỉnh Ty Ninh cho biết, chính quyền địa phương đang phối hợp với các đơn vị chức năng kiểm tra, xác minh nguyên nhn vụ sập cầu Tn Thành, thuộc địa bàn ấp Láng Lớn.",
+                    "score": 0.3684744
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are some news articles from this morning (November 10, 2023):\n\n1. **[Tin tức sáng 9-11: Vốn hóa HoSE, câu lạc bộ tỉ USD còn 51 doanh nghiệp - TamdaMedia](https://tamdamedia.eu/tin-tuc-sang-9-11-von-hoa-hose-cau-lac-bo-ti-usd-con-51-doanh-ng)**  \n   Source: tamdamedia.eu  \n   Summary: Notable news includes a petroleum company wanting to divest from a residential project in Ho Chi Minh City and the city implementing a month of action for gender equality in 2026.\n\n2. **[Tin tức quốc tế ngày 10.11: Tổng thống Trump ra một loạt tuyên bố quan trọng - Thanh Niên](https://thanhnien.vn/tin-tuc-quoc-te-sang-1011-tong-thong-trump-ra-tuyen-bo-moi-185261110000427831.htm)**  \n   Source: thanhnien.vn  \n   Summary: President Donald Trump stated that military action against Iran seems unnecessary at this time but emphasized readiness to act if the situation changes.\n\n3. **[Điểm tin ‘5 phút biết hết’ sáng 10-11: Bổ nhiệm Giám đốc Sở Nông nghiệp và Môi trường và Phó Giám đốc Sở Tài chính thành phố Đồng Nai - Báo Đồng Nai](https://baodongnai.com.vn/diem-tin-5-phut-biet-het-sang-10-11-bo-nhiem-giam-doc-so-nong-nghiep-va-moi-truong-va-pho-giam-doc-s-153935.html)**  \n   Source: baodongnai.com.vn  \n   Summary: Key updates include the appointment of new directors in Đồng Nai and the completion of land handover for a road construction project.\n\n4. **[Tin tức sáng 10-11: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện | Sky Tin](https://tin.skydoor.net/news/xa-hoi-tin-tuc-sang-1011-tphcm-nghien-cuu-ho-tro-nguoi-lao-dong-doi-8424684)**  \n   Source: tin.skydoor.net  \n   Summary: Ho Chi Minh City is researching support for workers to exchange old vehicles for electric ones, among other initiatives.\n\n5. **[Tin tức tai nạn giao thông mới nhất hôm nay 10/11/2026 - Báo Xây Dựng](https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm)**  \n   Source: baoxaydung.vn  \n   Summary: A traffic accident involving a tractor and a bridge collapse occurred, fortunately without casualties.\n\nIf you need more details on any specific article, feel free to ask!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "tin tức sáng nay",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "tin tức sáng nay",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Tin tức sáng 9-11: Vốn hóa HoSE, câu lạc bộ tỉ USD còn 51 doanh nghiệp - TamdaMedia",
+                "url": "https://tamdamedia.eu/tin-tuc-sang-9-11-von-hoa-hose-cau-lac-bo-ti-usd-con-51-doanh-ng",
+                "source": "tamdamedia.eu",
+                "summary": "Tết giữa trời u\n\nHomepageTRANG CHỦHot NewsNóngVideoVideoFacebookFacebookYoutubeYoutube\n\nHomepageTrang chủ\nHot NewsTin nóng\nVideoVideo\nFacebookFacebook\nYoutubeYoutube\n\n# Tin tức sáng 9-11: Vốn hóa HoSE, cu lạc bộ tỉ USD còn 51 doanh nghiệp\n\nTamda Media,\n\nMột số tin tức đáng chú ý: Một doanh nghiệp dầu khí muốn thoái vốn tại một chung cư tại TP.HCM; TP.HCM triển khai Tháng hành động vì bình đẳng giới năm 2026; Hơn 380.000 công dn ở TP.HCM thuộc diện gọi khám sơ tuyển nghĩa vụ qun sự... [...] UBND TP.HCM giao Học viện Cán bộ TP hoàn thành khảo sát mức độ hài lòng của người dn về dịch vụ xe buýt, gửi kết quả trước 10-11. Các cơ quan liên quan phải phối hợp chặt chẽ với Sở Xy dựng để đảm bảo tiến độ và hiệu quả trong công tác vận tải hành khách công cộng.\n\nTin tức thời tiết hôm nay 9-11\n\nTin tức thời tiết hôm nay 9-11\n\n(Theo Tuổi Trẻ)\n\nChia sẻ:\n\nBanner Articles\n\n## Bạn cũng có thể thích\n\nSéc hủy kỳ thi thử vào trung học, thay bằng ứng dụng luyện thi nng cấp [...] Hội đồng quản trị Công ty CP Xy dựng Công nghiệp và Dn dụng Dầu khí (PXI) vừa ban hành nghị quyết thông qua chủ trương chuyển nhượng toàn bộ phần vốn góp của doanh nghiệp tại dự án chung cư Huỳnh Tấn Phát (TP.HCM).\n\nPXI đưa ra mức giá cơ sở để đàm phán chuyển nhượng tối thiểu 12,9 tỉ đồng, tương ứng với giá trị khoản đầu tư đang được ghi nhận trên sổ kế toán của công ty.",
+                "score": 0.68697983
+              },
+              {
+                "title": "Tin tức quốc tế ngày 10.11: Tổng thống Trump ra một loạt tuyên bố quan trọng",
+                "url": "https://thanhnien.vn/tin-tuc-quoc-te-sang-1011-tong-thong-trump-ra-tuyen-bo-moi-185261110000427831.htm",
+                "source": "thanhnien.vn",
+                "summary": "Reuters vừa đưa tin Tổng thống Donald Trump tuyên bố rằng hành động qun sự của Mỹ nhắm vào Iran hiện có vẻ không cần thiết.\n\n\"Vào thời điểm này... việc thực hiện hành động qun sự dường như không phải là điều quá cần thiết. Tuy nhiên, chúng tôi đã ở trong tư thế sẵn sàng chiến đấu, có thể hành động bất cứ lúc nào nếu tình hình thay đổi\", ông Trump nói sáng nay 10.11 (giờ Việt Nam). \"Tôi nghĩ rằng mọi chuyện sẽ sớm kết thúc thôi\", ông đề cập đến cuộc xung đột với Tehran. [...] Trong video của mình, ông Netanyahu cảnh báo người dn Israel về cái mà ông gọi là \"mối đe dọa\" nếu đưa người Ả Rập-Israel vào chính phủ tương lai. \"Bạn không thể thành lập một chính phủ với những người ủng hộ Hamas, một chính phủ phụ thuộc vào những người ủng hộ Hamas\", ông Netanyahu tuyên bố, theo AFP.\n\nTin tức quốc tế sáng 10.11: Tổng thống Trump ra một loạt tuyên bố mới - Ảnh 4.\n\nThủ tướng Israel Benjamin Netanyahu hôm 28.10\n\nẢnh: Reuters\n\n## Nổ nhà máy thép ở Thổ Nhĩ Kỳ, 16 người chết [...] Trong khi đó, văn phòng công tố Paris cho biết họ đã yêu cầu ban hành lệnh bắt giữ quốc tế đối với thủ lĩnh của Shahid Kaveh, một đơn vị tác chiến mạng trực thuộc IRGC cùng hai cấp phó của người này, theo Reuters.\n\nĐến tối 9.11, chưa có phản ứng của phía Iran với các cáo buộc và tuyên bố trên.\n\nTin tức quốc tế sáng 10.11: Tổng thống Trump ra một loạt tuyên bố mới - Ảnh 3.\n\nCác nhn viên xếp hàng hóa đã hỏng bên ngoài một siêu thị Intermarché ở Paris hôm 13.10\n\nẢnh: Reuters",
+                "score": 0.6607204
+              },
+              {
+                "title": "Điểm tin ‘5 phút biết hết’ sáng 10-11: Bổ nhiệm Giám đốc Sở Nông nghiệp và Môi trường và Phó Giám đốc Sở Tài chính thành phố Đồng Nai",
+                "url": "https://baodongnai.com.vn/diem-tin-5-phut-biet-het-sang-10-11-bo-nhiem-giam-doc-so-nong-nghiep-va-moi-truong-va-pho-giam-doc-s-153935.html",
+                "source": "baodongnai.com.vn",
+                "summary": "Chia sẻ\n\nLưu\n\nIn\n\n(ĐN) - Điểm tin sáng nay có những nội dung đáng chú ý sau: Thường trực Thành ủy Đồng Nai làm việc với các đơn vị, địa phương về xy dựng vị trí việc làm, biên chế; Đồng Nai khai giảng lớp bồi dưỡng chuyên gia về chuyển đổi số năm 2026; Bàn giao toàn bộ hơn 104ha đất cao su tại Dự án Xy dựng đường ĐT.770B…\n\n\\Bổ nhiệm Giám đốc Sở Nông nghiệp và Môi trường và Phó Giám đốc Sở Tài chính thành phố Đồng Nai [...] \\Bàn giao toàn bộ hơn 104ha đất cao su tại Dự án Xy dựng đường ĐT.770B\n\nNgày 9-11, Ban Quản lý dự án đầu tư xy dựng công trình giao thông thành phố Đồng Nai cho biết đến nay, toàn bộ diện tích hơn 104ha đất cao su trong khu vực triển khai thực hiện Dự án Xy dựng đường ĐT.770B đã được bàn giao.\n\nPhối cảnh Dự án Xy dựng đường ĐT.770B. Ảnh tư liệu \n\nPhối cảnh Dự án Xy dựng đường ĐT.770B. Ảnh tư liệu [...] Người dn có nhu cầu đăng ký mua nhà cần tìm hiểu kỹ điều kiện được hưởng chính sách nhà ở xã hội, thành phần hồ sơ và giá bán cụ thể từng căn hộ trước khi đăng ký.\n\nTin tức nổi bật trên Báo Đồng Nai hôm nay 10-11-2026:\n\nBáo Đồng Nai Online\n\n### Ý kiến ()\n\n0 / 500 ký tự\n\nHãy đăng nhập hoặc tạo tài khoản để bình luận\n\n Guest\n\nQuan tm nhất Mới nhất\n\nĐang tải dữ liệu\n\n## Cùng chuyên mục",
+                "score": 0.65597594
+              },
+              {
+                "title": "Tin tức sáng 10-11: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện | Sky Tin",
+                "url": "https://tin.skydoor.net/news/xa-hoi-tin-tuc-sang-1011-tphcm-nghien-cuu-ho-tro-nguoi-lao-dong-doi-8424684",
+                "source": "tin.skydoor.net",
+                "summary": "5 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n## Tin tức Xã Hội mới nhất hôm nay\n\n[](\n\n### Mưa to gió giật quật đổ nhiều cy xanh, đè vào ôtô ở Đà Nẵng\n\n4 giờ trước–tienphong.vntienphong.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Việt Nam và Nhật Bản trao 3 văn kiện hợp tác trị giá hơn 43,1 tỷ yên\n\n4 giờ trước–nhandan.vnnhandan.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Ủy viên Ủy ban Kiểm tra Trung ương Trần Quốc Bình giữ chức Phó Bí thư Tỉnh ủy Hưng Yên\n\n5 giờ trước–baogialai.com.vnbaogialai.com.vn [...] [](\n\n### Phiên tòa giả định dành cho thanh niên, cảnh báo hiểm họa ma túy và mua bán người\n\n4 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### VietinBank kết nối doanh nghiệp FDI: Tìm đối tác, đón cơ hội đầu tư\n\n5 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### TP.HCM mời gọi doanh nghiệp tỉnh Aichi mở rộng đầu tư sản xuất, chế tạo\n\n5 giờ trước–tuoitre.vntuoitre.vn\n\nXem tóm tắt nhanh\n\n[](\n\n### Thứ trưởng Bộ Nông nghiệp Mỹ: Ở TP.HCM cũng có thể nấu món Mỹ như tại Mỹ [...] Bỏ qua điều hướng\n\nSkydoor\n\nSky Tin - Tin tức địa phương toàn cầu 24h mới nhất!\n\nXem tin theo cách của bạn >>\n\n\n\n# Tin tức sáng 10-11: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện\n\nTin tức đáng chú ý: TP.HCM nghiên cứu hỗ trợ người lao động đổi xe cũ sang xe điện; TP.HCM tổ chức Countdown 4 ngày tại phố đi bộ Nguyễn\n\nĐọc tin gốc tại tuoitre.vn →\n\n## Tin tức Thành phố Hồ Chí Minh mới nhất hôm nay\n\n[](",
+                "score": 0.6496014
+              },
+              {
+                "title": "Tin tức tai nạn giao thông mới nhất hôm nay 10/11/2026",
+                "url": "https://baoxaydung.vn/tin-tuc-tai-nan-giao-thong-moi-nhat-hom-nay-10-11-2026-19226111007124908.htm",
+                "source": "baoxaydung.vn",
+                "summary": "Theo đó, khoảng 8h30 cùng ngày, một máy cày kéo theo rơ-moóc chở máy xúc Kobe lưu thông qua cầu Tn Thành. Khi đoàn phương tiện di chuyển đến giữa cầu, nhịp cầu bất ngờ gãy và đổ xuống kênh. Sự cố xảy ra đột ngột khiến máy cày, rơ-moóc và máy xúc rơi xuống dòng kênh bên dưới. May mắn, vụ việc không gy thiệt hại về người. [...] Ngày 9/11, UBND xã Khánh Hưng, tỉnh Ty Ninh cho biết, chính quyền địa phương đang phối hợp với các đơn vị chức năng kiểm tra, xác minh nguyên nhn vụ sập cầu Tn Thành, thuộc địa bàn ấp Láng Lớn.",
+                "score": 0.3684744
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-11-10T11:55:42"
+    }
+  ]
+}
