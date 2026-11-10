@@ -8,7 +8,7 @@ PyYAML>=6.0
 pypdf>=4.0.0
 # Tool unit tests:
 pytest>=8.0.0
-# UI:
+# UI (required deliverable):
 streamlit>=1.37.0
 # datetime tool (IANA tz database on Windows):
 tzdata>=2024.1
