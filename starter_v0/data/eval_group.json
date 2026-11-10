@@ -3,5 +3,103 @@
   "dataset_role": "group",
   "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G01_calc_routing",
+      "phase": "B", "suite": "group",
+      "query": "Tính giúp mình 125 * 48 + 90 bằng bao nhiêu?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "calc", "args": {}}]},
+      "metadata": {"skill": "routing_calc", "difficulty": "easy", "what_it_tests": "Phép tính số học rõ ràng → gọi calc, không phải lookup/web."}
+    },
+    {
+      "id": "G02_wiki_concept_routing",
+      "phase": "B", "suite": "group",
+      "query": "Transformer trong học máy là gì? Giải thích ngắn gọn giúp mình.",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "wiki", "args": {}}]},
+      "metadata": {"skill": "routing_wiki_concept", "difficulty": "medium", "what_it_tests": "Kiến thức bách khoa ổn định ('X là gì') → wiki, không phải lookup topic=news."}
+    },
+    {
+      "id": "G03_define_word_routing",
+      "phase": "B", "suite": "group",
+      "query": "Từ 'serendipity' nghĩa là gì vậy?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "define", "args": {"word": "serendipity"}}]},
+      "metadata": {"skill": "routing_define_word", "difficulty": "medium", "what_it_tests": "Hỏi nghĩa một TỪ đơn → define với word đúng, không dùng wiki/lookup."}
+    },
+    {
+      "id": "G04_datetime_routing",
+      "phase": "B", "suite": "group",
+      "query": "Bây giờ ở Hà Nội là mấy giờ rồi?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "datetime", "args": {}}]},
+      "metadata": {"skill": "routing_datetime", "difficulty": "easy", "what_it_tests": "Hỏi thời gian hiện tại → datetime, không phải lookup."}
+    },
+    {
+      "id": "G05_algebra_out_of_scope",
+      "phase": "B", "suite": "group",
+      "query": "Giải phương trình x^2 - 5x + 6 = 0 giúp mình với.",
+      "failure_type": "out_of_scope",
+      "expect": {"no_tool": true, "behavior": "refuse"},
+      "metadata": {"skill": "boundary_calc_vs_algebra", "difficulty": "hard", "what_it_tests": "Đại số ký hiệu (giải phương trình chữ) KHÔNG phải số học → KHÔNG được lạm dụng calc, phải từ chối/định hướng."}
+    },
+    {
+      "id": "G06_calc_multiturn_fill",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tính hộ mình tổng chi phí nhé"},
+        {"role": "user", "content": "Là 3 món: 120, 80 và 45 (nghìn)"},
+        {"role": "user", "content": "Cộng cả ba số lại là ra"}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "calc", "args": {}}]},
+      "metadata": {"skill": "multiturn_calc_fill", "difficulty": "medium", "what_it_tests": "3 turns: gom số từ lượt trước, lượt cuối yêu cầu cộng → calc (không hỏi lại nữa vì đã đủ số)."}
+    },
+    {
+      "id": "G07_wiki_multiturn_correction",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "RAG là gì thế?"},
+        {"role": "user", "content": "À nhầm, ý mình là LoRA"},
+        {"role": "user", "content": "Giải thích ngắn gọn LoRA thôi"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "wiki", "args": {}}]},
+      "metadata": {"skill": "multiturn_wiki_correction", "difficulty": "hard", "what_it_tests": "3 turns: sửa chủ đề RAG→LoRA, lượt cuối vẫn là 'X là gì' → wiki về LoRA."}
+    },
+    {
+      "id": "G08_summarize_not_send_boundary",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tổng hợp tin AI hôm nay rồi gửi lên Telegram luôn giúp mình"},
+        {"role": "user", "content": "Khoan, chưa cần gửi, chỉ tổng hợp thôi"}
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"topic": "news", "timeframe": "day"}}]},
+      "metadata": {"skill": "multiturn_drop_send", "difficulty": "hard", "what_it_tests": "2 turns: người dùng rút lại yêu cầu gửi → chỉ lookup tin, KHÔNG gọi send/clarify-để-gửi."}
+    },
+    {
+      "id": "G09_lookup_carryover_timeframe",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tin crypto trong tuần này có gì?"},
+        {"role": "user", "content": "Chỉ Bitcoin thôi, vẫn là tuần này nhé"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "Bitcoin", "topic": "news", "timeframe": "week"}}]},
+      "metadata": {"skill": "multiturn_carryover_timeframe", "difficulty": "hard", "what_it_tests": "2 turns: carry timeframe=week + topic=news từ lượt 1, thu hẹp query=Bitcoin ở lượt 2."}
+    },
+    {
+      "id": "G10_still_missing_handle_clarify",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Lấy tweet mới nhất giúp mình"},
+        {"role": "user", "content": "Ừ, 5 cái nhé"}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "text"}}]},
+      "metadata": {"skill": "multiturn_still_missing_handle", "difficulty": "medium", "what_it_tests": "2 turns: đã có limit=5 nhưng VẪN thiếu handle → clarify xin tên tài khoản, không đoán bừa."}
+    }
+  ]
 }

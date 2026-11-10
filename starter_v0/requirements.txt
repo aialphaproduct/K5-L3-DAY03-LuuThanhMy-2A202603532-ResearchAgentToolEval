@@ -10,3 +10,5 @@ pypdf>=4.0.0
 pytest>=8.0.0
 # UI:
 streamlit>=1.37.0
+# datetime tool (IANA tz database on Windows):
+tzdata>=2024.1

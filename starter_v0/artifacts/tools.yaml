@@ -16,55 +16,71 @@
 tools:
   # ---------------- Core tools ----------------
   - name: clarify
-    description: "Gửi một câu hỏi cho người dùng."
+    description: >-
+      Hỏi lại người dùng khi THIẾU thông tin bắt buộc hoặc cần XÁC NHẬN trước
+      hành động ghi. DÙNG khi: thiếu handle/URL cụ thể, yêu cầu mơ hồ ('bài này',
+      'tweet mới nhất' mà không nói của ai), hoặc trước khi gửi/đăng (response_type=yes_no).
+      KHÔNG đoán bừa. KHÔNG dùng cho câu đã đủ dữ kiện.
     parameters:
       type: object
       properties:
-        question: {type: string, default: "", description: "Câu hỏi"}
-        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời"}
-        options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn"}
+        question: {type: string, default: "", description: "Câu hỏi cụ thể cần người dùng trả lời."}
+        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "yes_no khi xin xác nhận gửi/đăng; choice khi có sẵn lựa chọn; còn lại text."}
+        options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn (chỉ khi response_type=choice)."}
       required: [question]
 
   - name: timeline
-    description: "Lấy các bài đăng gần đây."
+    description: >-
+      Lấy bài đăng gần đây CỦA MỘT tài khoản cụ thể trên X/Twitter. DÙNG khi
+      người dùng hỏi 'tweet mới nhất của <người>'. KHÔNG DÙNG để tìm theo chủ đề
+      (đó là social_search). Nếu không biết của ai → clarify, đừng đoán.
     parameters:
       type: object
       properties:
-        screenname: {type: string, default: "", description: "Tên tài khoản"}
-        limit: {type: integer, default: 5, description: "Số lượng"}
+        screenname: {type: string, default: "", description: "Handle KHÔNG kèm @ (vd Sam Altman→sama, Elon Musk→elonmusk, Andrej Karpathy→karpathy)."}
+        limit: {type: integer, default: 5, description: "Số tweet; trích từ câu ('10 tweet'→10)."}
       required: [screenname]
 
   - name: social_search
-    description: "Tìm trên mạng xã hội."
+    description: >-
+      Tìm bài đăng theo TỪ KHÓA/CHỦ ĐỀ trên X/Twitter (nhiều người nói gì về X).
+      DÙNG khi hỏi dư luận/thảo luận về một chủ đề. KHÔNG DÙNG khi muốn tweet của
+      một người cụ thể (đó là timeline).
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Từ khóa"}
-        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Cách sắp xếp"}
-        limit: {type: integer, default: 5, description: "Số lượng"}
+        query: {type: string, default: "", description: "Từ khóa/chủ đề cần tìm."}
+        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "'phổ biến/top/nổi bật'→Top; 'mới nhất/gần đây'→Latest."}
+        limit: {type: integer, default: 5, description: "Số bài."}
       required: [query]
 
   - name: lookup
-    description: "Tra cứu thông tin trên internet."
+    description: >-
+      Tìm thông tin TRÊN WEB (tin tức, sự kiện, dữ kiện hiện tại). DÙNG cho tin
+      thời sự và khám phá rộng. KHÔNG DÙNG khi đã có URL cụ thể (dùng fetch), khi
+      hỏi khái niệm bách khoa ổn định (dùng wiki), hay tweet (timeline/social_search).
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Truy vấn"}
-        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại"}
-        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian"}
-        max_results: {type: integer, default: 5, description: "Số kết quả"}
+        query: {type: string, default: "", description: "Truy vấn tìm kiếm."}
+        topic: {type: string, enum: [general, news], default: "general", description: "Tin tức/thời sự→news; còn lại general."}
+        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "'hôm nay'→day; 'tuần này'→week; 'tháng này'→month."}
+        max_results: {type: integer, default: 5, description: "Số kết quả."}
       required: [query]
 
   - name: fetch
-    description: "Lấy nội dung từ một địa chỉ."
+    description: >-
+      Đọc nội dung của MỘT URL cụ thể mà người dùng đã cung cấp. DÙNG khi câu có
+      sẵn link và muốn tóm tắt/đọc link đó. KHÔNG DÙNG khi chưa có URL (hỏi lại
+      bằng clarify) hay cần tìm kiếm rộng (lookup).
     parameters:
       type: object
       properties:
-        url: {type: string, default: "", description: "Địa chỉ"}
+        url: {type: string, default: "", description: "URL đầy đủ cần đọc (http/https)."}
       required: [url]
 
   - name: format
-    description: "Trình bày dữ liệu đã có thành văn bản."
+    description: "Trình bày các item ĐÃ CÓ sẵn thành digest markdown. Chỉ dùng sau khi đã thu thập dữ liệu, không dùng để tìm/đọc."
     parameters:
       type: object
       properties:
@@ -123,3 +139,55 @@ tools:
         max_pages: {type: integer, default: 5, description: "Số trang"}
         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
       required: [arxiv_url]
+
+  # ---------------- Team-added tools (Lưu Thanh Mỹ) ----------------
+  - name: calc
+    description: >-
+      Tính một biểu thức SỐ HỌC cơ bản (+ - * / // % ** và ngoặc) trên các con
+      số cụ thể, chạy cục bộ. DÙNG khi người dùng yêu cầu một phép tính số rõ
+      ràng (vd '12*(3+4)', '15% của 200'). KHÔNG DÙNG cho giải tích/đại số ký
+      hiệu (nguyên hàm, đạo hàm, giải phương trình chữ) hay câu hỏi nghiên cứu —
+      những việc đó từ chối hoặc dùng tool khác.
+    parameters:
+      type: object
+      properties:
+        expression: {type: string, default: "", description: "Biểu thức số học, vd '2+3*4'. Chỉ số và toán tử, không có chữ/hàm."}
+      required: [expression]
+
+  - name: datetime
+    description: >-
+      Lấy NGÀY GIỜ HIỆN TẠI theo múi giờ IANA, chạy cục bộ. DÙNG khi người dùng
+      hỏi 'bây giờ mấy giờ', 'hôm nay ngày mấy', 'thứ mấy', hoặc cần mốc thời
+      gian hiện tại. KHÔNG DÙNG để tra sự kiện quá khứ/tương lai hay tin tức
+      theo ngày (dùng lookup với timeframe).
+    parameters:
+      type: object
+      properties:
+        timezone: {type: string, default: "UTC", description: "Tên múi giờ IANA, vd 'Asia/Ho_Chi_Minh', 'UTC'."}
+        fmt: {type: string, default: "iso", description: "'iso' hoặc chuỗi strftime như '%Y-%m-%d %H:%M'."}
+      required: []
+
+  - name: wiki
+    description: >-
+      Tra TÓM TẮT BÁCH KHOA (Wikipedia) cho một khái niệm/thực thể có sẵn. DÙNG
+      cho kiến thức nền ổn định: 'X là gì', giới thiệu ngắn, bối cảnh lịch sử.
+      KHÔNG DÙNG cho tin tức thời sự (dùng lookup topic=news), bài đăng mạng xã
+      hội (social_search), hay đọc một URL cụ thể (fetch).
+    parameters:
+      type: object
+      properties:
+        title: {type: string, default: "", description: "Tên khái niệm/thực thể cần tra, vd 'Transformer (machine learning)'."}
+        sentences: {type: integer, default: 3, description: "Số câu tóm tắt tối đa."}
+      required: [title]
+
+  - name: define
+    description: >-
+      Tra NGHĨA của một TỪ (mặc định tiếng Anh) qua từ điển. DÙNG khi người dùng
+      hỏi định nghĩa/nghĩa của một từ đơn ('define serendipity'). KHÔNG DÙNG để
+      giới thiệu khái niệm dài (dùng wiki), dịch cả câu, hay tra tin tức.
+    parameters:
+      type: object
+      properties:
+        word: {type: string, default: "", description: "Từ cần tra nghĩa."}
+        lang: {type: string, default: "en", description: "Mã ngôn ngữ, vd 'en'."}
+      required: [word]
