@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "research-agent-ui",
+      "runtimeExecutable": "starter_v0/.venv/Scripts/python.exe",
+      "runtimeArgs": ["-m", "streamlit", "run", "starter_v0/app.py", "--server.port", "8501", "--server.headless", "true", "--browser.gatherUsageStats", "false"],
+      "port": 8501
+    }
+  ]
+}

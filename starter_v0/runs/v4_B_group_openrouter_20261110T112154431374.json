@@ -1,0 +1,705 @@
+{
+  "run_id": "v4_B_group_openrouter_20261110T112154431374",
+  "version": "v4",
+  "artifact_version": "v4+p25a4dbaed67c+t30f8c984d3fc",
+  "prompt_hash": "25a4dbaed67cee39355921cecc3a2c5f5d21c880788515ad4deaf6b763701e5b",
+  "tools_hash": "30f8c984d3fc74f7a090ca21e2d2f8525b9c7c0fae8f18db3e1edeeb016b0978",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "C:\\CV\\Claude\\K5-L3-DAY03-LuuThanhMy-2A202603532-ResearchAgentToolEval\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\CV\\Claude\\K5-L3-DAY03-LuuThanhMy-2A202603532-ResearchAgentToolEval\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Case do NHÓM tự viết thêm để cover thêm trường hợp. Mỗi case cần: id, phase='B', query HOẶC turns, failure_type (thuộc allowed_failure_types), và expect (tool_calls[...] hoặc no_tool=true). Nên kèm metadata.what_it_tests.",
+  "generated_at": "2026-11-10T11:21:54",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 9,
+    "case_accuracy": 0.9,
+    "tool_routing_accuracy": 0.9,
+    "argument_accuracy": 0.9,
+    "multiturn_accuracy": 0.8,
+    "failure_counts": {
+      "missing_info": 1
+    },
+    "observed_mismatch_counts": {
+      "missing_tool_call": 1
+    }
+  },
+  "results": [
+    {
+      "id": "G01_calc_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_calc",
+        "difficulty": "easy",
+        "what_it_tests": "Phép tính số học rõ ràng → gọi calc, không phải lookup/web."
+      },
+      "input": "Tính giúp mình 125 * 48 + 90 bằng bao nhiêu?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "calc",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "calc",
+            "args": {
+              "expression": "125*48+90"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "calc",
+          "args": {
+            "expression": "125*48+90"
+          },
+          "result": {
+            "tool": "calculate",
+            "expression": "125*48+90",
+            "result": 6090
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_wiki_concept_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_wiki_concept",
+        "difficulty": "medium",
+        "what_it_tests": "Kiến thức bách khoa ổn định ('X là gì') → wiki, không phải lookup topic=news."
+      },
+      "input": "Transformer trong học máy là gì? Giải thích ngắn gọn giúp mình.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wiki",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wiki",
+            "args": {
+              "title": "Transformer (machine learning)",
+              "sentences": 3
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wiki",
+          "args": {
+            "title": "Transformer (machine learning)",
+            "sentences": 3
+          },
+          "result": {
+            "tool": "wiki_summary",
+            "title": "Transformer (deep learning)",
+            "summary": "In deep learning, the transformer is a family of artificial neural network architectures based on the multi-head attention mechanism, in which input data such as text, images, or audio is converted to a sequence of numerical representations called tokens, and each token is converted into a vector through an embedding layer. At each layer, each token is then contextualized within the scope of the context window with other (unmasked) tokens via a parallel multi-head attention mechanism, allowing the signal for key tokens to be amplified and less important tokens to be diminished. Because self-attention alone is permutation-invariant, transformers inject positional information, typically through positional encodings or learned positional embeddings, so token order can affect the output.",
+            "url": "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
+            "source": "en.wikipedia.org"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_define_word_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_define_word",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi nghĩa một TỪ đơn → define với word đúng, không dùng wiki/lookup."
+      },
+      "input": "Từ 'serendipity' nghĩa là gì vậy?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "define",
+            "args": {
+              "word": "serendipity"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "define",
+            "args": {
+              "word": "serendipity"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "define",
+          "args": {
+            "word": "serendipity"
+          },
+          "result": {
+            "tool": "define_word",
+            "word": "serendipity",
+            "phonetic": "/ˌsɛ.ɹən.ˈdɪ.pɪ.ti/",
+            "meanings": [
+              {
+                "part_of_speech": "noun",
+                "definitions": [
+                  "A combination of events which have come together by chance to make a surprisingly good or wonderful outcome.",
+                  "An unsought, unintended, and/or unexpected, but fortunate, discovery and/or learning experience that happens by accident."
+                ]
+              }
+            ],
+            "source": "dictionaryapi.dev"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_datetime_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_datetime",
+        "difficulty": "easy",
+        "what_it_tests": "Hỏi thời gian hiện tại → datetime, không phải lookup."
+      },
+      "input": "Bây giờ ở Hà Nội là mấy giờ rồi?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "datetime",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "datetime",
+            "args": {
+              "timezone": "Asia/Ho_Chi_Minh"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "datetime",
+          "args": {
+            "timezone": "Asia/Ho_Chi_Minh"
+          },
+          "result": {
+            "tool": "current_datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "datetime": "2026-11-10T11:21:33.525779+07:00",
+            "date": "2026-11-10",
+            "time": "11:21:33",
+            "weekday": "Tuesday"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_algebra_out_of_scope",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "boundary_calc_vs_algebra",
+        "difficulty": "hard",
+        "what_it_tests": "Đại số ký hiệu (giải phương trình chữ) KHÔNG phải số học → KHÔNG được lạm dụng calc, phải từ chối/định hướng."
+      },
+      "input": "Giải phương trình x^2 - 5x + 6 = 0 giúp mình với.",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Tôi không thể giải phương trình đại số như vậy. Bạn có thể sử dụng một công cụ giải phương trình hoặc phần mềm toán học để tìm nghiệm của phương trình này. Nếu bạn cần thông tin khác, hãy cho tôi biết!",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G06_calc_multiturn_fill",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_calc_fill",
+        "difficulty": "medium",
+        "what_it_tests": "3 turns: gom số từ lượt trước, lượt cuối yêu cầu cộng → calc (không hỏi lại nữa vì đã đủ số)."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tính hộ mình tổng chi phí nhé"
+        },
+        {
+          "role": "user",
+          "content": "Là 3 món: 120, 80 và 45 (nghìn)"
+        },
+        {
+          "role": "user",
+          "content": "Cộng cả ba số lại là ra"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "calc",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "calc",
+            "args": {
+              "expression": "120+80+45"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "calc",
+          "args": {
+            "expression": "120+80+45"
+          },
+          "result": {
+            "tool": "calculate",
+            "expression": "120+80+45",
+            "result": 245
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_wiki_multiturn_correction",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_wiki_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: sửa chủ đề RAG→LoRA, lượt cuối vẫn là 'X là gì' → wiki về LoRA."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "RAG là gì thế?"
+        },
+        {
+          "role": "user",
+          "content": "À nhầm, ý mình là LoRA"
+        },
+        {
+          "role": "user",
+          "content": "Giải thích ngắn gọn LoRA thôi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wiki",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wiki",
+            "args": {
+              "title": "LoRA (Low-Rank Adaptation)",
+              "sentences": 3
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wiki",
+          "args": {
+            "title": "LoRA (Low-Rank Adaptation)",
+            "sentences": 3
+          },
+          "result": {
+            "tool": "wiki_summary",
+            "error": "HTTPError",
+            "message": "404 Client Error: Not Found for url: https://en.wikipedia.org/api/rest_v1/page/summary/LoRA_%28Low-Rank_Adaptation%29"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_summarize_not_send_boundary",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_drop_send",
+        "difficulty": "hard",
+        "what_it_tests": "2 turns: người dùng rút lại yêu cầu gửi → chỉ lookup tin, KHÔNG gọi send/clarify-để-gửi."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tổng hợp tin AI hôm nay rồi gửi lên Telegram luôn giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Khoan, chưa cần gửi, chỉ tổng hợp thôi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "AI",
+              "topic": "news",
+              "timeframe": "day"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "day"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Recent Advances in AI Are Creating a ‘Paradigm Shift’ for Robotics | Research UC Berkeley",
+                "url": "https://vcresearch.berkeley.edu/news/recent-advances-ai-are-creating-paradigm-shift-robotics",
+                "source": "vcresearch.berkeley.edu",
+                "summary": "In recent months, artificial intelligence agents that can reason, plan and use external tools to accomplish multistep tasks have already reshaped computer coding, online shopping, dinner reservations and cyberattacks.\n\nRobotics might be next.\n\nKen Goldberg, a UC Berkeley roboticist and professor of engineering, said new models make it possible for teams of AI agents to develop robot-control programs, test them in simulated environments and revise the code when something doesn’t work. [...] Then, AI agents generate and connect these skills into a robot program. Using NVIDIA’s Isaac simulation libraries, the agents autonomously rehearse the program across task variations, identify where failures happen and refine the approach before deployment. [...] OpenAI’s recent release of its Astra model made the process even more promising, Goldberg said. His postdoctoral students Eric Kaiyuan Chen and Shuangyu Xie gave Astra access to their simulation interface and a short video of a real robot whose assignment was using a sponge to wipe ink off a metal bar. In less than an hour, the AI tool created and fine-tuned a physics simulation that accurately reproduced the video, including very realistic deformations of the sponge.",
+                "score": 0.29827207
+              },
+              {
+                "title": "Meta introduces Muse Ember to power cost-efficient AI agents - SiliconANGLE",
+                "url": "https://siliconangle.com/2026/11/09/meta-introduces-muse-ember-to-power-cost-efficient-ai-agents",
+                "source": "siliconangle.com",
+                "summary": "Anthropic launches Fable 5.2 and Mythos 5.2 with science, coding upgrades\n\n  AI - BY MARIA DEUTSCHER . 2 HOURS AGO\n Trump stands by Nvidia boss Jensen Huang despite spy scandal, but FBI is investigating\n\n  POLICY - BY MIKE WHEATLEY . 2 HOURS AGO\n Alphabet’s Wing to invest $125M in new delivery drone factory\n\n  EMERGING TECH - BY MARIA DEUTSCHER . 4 HOURS AGO\n Cisco research: Trust, not technology, is now the speed limit on enterprise AI [...] Anthropic launches Fable 5.2 and Mythos 5.2 with science, coding upgrades\n Trump stands by Nvidia boss Jensen Huang despite spy scandal, but FBI is investigating\n IBM builds on hybrid cloud and governance to advance its enterprise AI operating model\n Alphabet’s Wing to invest $125M in new delivery drone factory\n Cisco research: Trust, not technology, is now the speed limit on enterprise AI\n On theCUBE Pod: Blue wave sends AI stock plunging\n\n##### LATEST STORIES [...] One possibility is that the company used it to perform post-training, the task of honing a model’s capabilities by training it on additional data. Thinking Machines Labs Inc. recently demonstrated that even a relatively small LLM can run post-training runs end-to-end. Anthropic PBC, for its part, last week revealed that its AI models could soon gain the ability to significantly accelerate machine learning research.",
+                "score": 0.26130545
+              },
+              {
+                "title": "Live online certificate brings AI expertise to finance professionals | Cornell Chronicle",
+                "url": "https://news.cornell.edu/stories/2026/11/live-online-certificate-brings-ai-expertise-finance-professionals",
+                "source": "news.cornell.edu",
+                "summary": "That philosophy is reflected in the curriculum, which progresses from AI foundations and tools to financial use cases, responsible AI, industry applications and leadership. Participants examine applications including investment research, credit risk, fraud detection, compliance, client engagement and operational efficiency, while also considering issues such as hallucinations, data security, regulation and governance. The program concludes by asking participants to identify opportunities for AI [...] The AI in Finance certificate, offered through eCornell as a collaboration between the Cornell Duffield College of Engineering and the Cornell SC Johnson College of Business, debuted in spring 2026 with 37 participants. Unlike many online certificate programs built primarily around prerecorded material, the program is taught live online, allowing participants to interact directly with Cornell faculty and industry practitioners. [...] Averbukh, who is also a professor of practice in the School of Operations Research and Information Engineering, said conversations with those practitioners increasingly turned toward artificial intelligence – first big data and predictive analytics, then machine learning and, more recently, generative and agentic AI.",
+                "score": 0.22764139
+              },
+              {
+                "title": "Google AI policy forces decision for San Diego schools – NBC 7 San Diego",
+                "url": "https://www.nbcsandiego.com/news/local/googles-ai-ultimatum-forces-san-diego-schools-make-tough-choice/4099437",
+                "source": "nbcsandiego.com",
+                "summary": "As districts consider their options, students are already seeing artificial intelligence become a more common part of everyday learning.\n\n“I feel like I see a lot of people using AI now,” said Delilah Ortiz, a student at El Camino High School.\n\nSome students believe the focus should be on establishing guidelines for AI use rather than banning the technology entirely. [...] San Diego County school districts face a January deadline to decide whether to opt in to Google's artificial intelligence features or lose access to the company's search engine, forcing educators to weigh the benefits of AI against concerns about student access to the technology. [...] Google plans to disable a range of AI-powered features, including Gemini, Gemini Notebook and Search in January to give school districts more control over the technology students can access. However, districts that want to continue using Google Search will have to opt in to the AI features.\n\nStream San Diego News for free, 24/7, wherever you are with NBC 7.\n\nWatch button  WATCH HERE",
+                "score": 0.202917
+              },
+              {
+                "title": "Military-made AI tool helped thwart World Cup bomb threat - Federal News Network",
+                "url": "https://federalnewsnetwork.com/artificial-intelligence/2026/11/military-made-ai-tool-helped-thwart-world-cup-bomb-threat",
+                "source": "federalnewsnetwork.com",
+                "summary": "The 2026 World Cup brought more than six million spectators from around the world to more than 100 matches in 16 host cities in the U.S., Canada and Mexico over the course of two months, prompting a massive interagency effort to secure those sites using technologies like AI and drones. Two people were charged in connection with another bomb threat against FIFA during a World Cup match at MetLife Stadium in New Jersey. [...] A military-made artificial intelligence tool helped law enforcement thwart a bomb threat at the FIFA World Cup in California this summer.\n\nThe previously undisclosed incident occurred June 18, when Switzerland faced Bosnia and Herzegovina at SoFi Stadium outside Los Angeles, Army Capt. Ryan Hetrick, who leads the Pentagon’s Generative AI Task Force, said Nov. 6 at an AI event in Washington. [...] Hetrick has become one of the military’s biggest — and busiest — evangelists for AI. The GenAI Task Force travels around the globe to sit down with troops on operations floors and in the field and find AI fixes for their most pressing problems.",
+                "score": 0.19305643
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_lookup_carryover_timeframe",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_carryover_timeframe",
+        "difficulty": "hard",
+        "what_it_tests": "2 turns: carry timeframe=week + topic=news từ lượt 1, thu hẹp query=Bitcoin ở lượt 2."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin crypto trong tuần này có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ Bitcoin thôi, vẫn là tuần này nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Bitcoin",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "Bitcoin",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Bitcoin",
+            "topic": "news",
+            "timeframe": "week"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Bitcoin",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "Current price of Bitcoin for Nov. 9, 2026 | Fortune",
+                "url": "https://fortune.com/article/price-of-bitcoin-11-09-2026",
+                "source": "fortune.com",
+                "summary": "Bitcoin is the original cryptocurrency and remains the most popular crypto coin on the market. Its market capitalization is around $1.33 trillion—considerably higher than the runner up, Ethereum, with a market cap of around $233 billion.\n\nIn short, it’s a decentralized digital currency. What that means is that it’s run on a peer-to-peer network instead of being controlled by the government, a bank, etc. It allows you to send value directly to someone else without a middleman. [...] Current price of Bitcoin for Nov. 9, 2026\n\nGetty Images\n\nAdd Fortune on Google for similar content.\n\nAt 7:30 a.m. Eastern Time today, the price of Bitcoin (1 BTC) is $74,549.48. That marks a $1,269.46 decrease from yesterday morning—and approximately a $30,162 fall compared with one year ago.\n\n| Bitcoin price | % Change |\n --- |\n| Price of Bitcoin yesterday | $75,818.94 | -1.67% |\n| Price of Bitcoin 1 month ago | $81,746.43 | -8.80% |\n| Price of Bitcoin 1 year ago | $104,711.60 | -28.79% | [...] | Bitcoin |\n\n| Price per coin as of 7:30 a.m. on Nov. 9, 2026 | $74,549.48 |\n| Ethereum |\n| Price per coin as of 7:30 a.m. on Nov. 9, 2026 | $2,118.49 |\n| Tether (USDT) |\n| Price per coin as of 7:30 a.m. on Nov. 9, 2026 | $0.99 |\n| XRP |\n| Price per coin as of 7:30 a.m. on Nov. 9, 2026 | $1.09 |",
+                "score": 0.6796259
+              },
+              {
+                "title": "Current price of Bitcoin for Nov. 3, 2026 | Fortune",
+                "url": "https://fortune.com/article/price-of-bitcoin-11-03-2026",
+                "source": "fortune.com",
+                "summary": "Bitcoin is the first cryptocurrency ever created and is still the most widely recognized digital coin available today. Its market capitalization sits around $1.33 trillion, far above runner-up Ethereum, which has a market value of roughly $233 billion. [...] At its core, Bitcoin is a decentralized digital currency. That means it operates on a peer-to-peer network instead of being controlled by a government, bank, or other central authority. It lets you transfer value straight to another person without using a financial middleman. [...] Current price of Bitcoin for Nov. 3, 2026\n\nGetty Images\n\nAdd Fortune on Google for similar content.\n\nAt 6:45 a.m. Eastern Time today, the price of Bitcoin (1 BTC) is $76,995.40. That represents a $755 decrease from yesterday morning and about a $29,586 loss compared with the price one year ago.\n\n| Bitcoin price | % Change |\n --- |\n| Price of Bitcoin yesterday | $77,750.64 | -0.97% |\n| Price of Bitcoin 1 month ago | $84,637.02 | -9.02% |\n| Price of Bitcoin 1 year ago | $106,581.26 | -27.75% |",
+                "score": 0.6455898
+              },
+              {
+                "title": "Bitcoin tumbles below $76,000 as post-election stock rally fades",
+                "url": "https://finance.yahoo.com/markets/article/bitcoin-tumbles-below-76000-as-post-election-stock-rally-fades-174540188.html",
+                "source": "finance.yahoo.com",
+                "summary": "Bitcoin (BTC-USD) tumbled below $76,000 on Thursday as investors moved out of riskier assets amid a broad sell-off in US stocks that threatened to erase the previous day's post-election rally.\n\nThe world's largest cryptocurrency fell 5% Thursday, reversing a sharp rebound Wednesday that had lifted bitcoin above $80,000 as investors cheered midterm election results showing Democrats swept both chambers of Congress. [...] Bitcoin's latest slide follows a warning from digital asset research firm K33 earlier this week that unusually thin trading activity and rising use of leverage set up bitcoin for sharp price swings following midterm results.\n\nBitcoin's retreat also underscored of the crypto market's lingering fragility following $6.3 billion hack of Binance, the world's largest cryptocurrency exchange, which rattled crypto prices last week. [...] On the other hand, others see a silver lining for bitcoin post-midterms. Sean Farrell, Fundstrat's head of digital assets, argued in a Wednesday afternoon note to clients that the decisive Democratic victory in Congress could strengthen the largest cryptocurrency's appeal as a hedge against larger federal deficits.\n\nRepresentation of Bitcoin cryptocurrency in this illustration taken September 10, 2025. REUTERS/Dado Ruvic",
+                "score": 0.585789
+              },
+              {
+                "title": "Bitcoin's drop and pop triggers $1 billion in liquidations",
+                "url": "https://www.coindesk.com/markets/2026/11/09/bitcoin-drops-then-pops-as-nvidia-cheating-scandal-and-failed-iran-talks-trigger-volatility",
+                "source": "coindesk.com",
+                "summary": "Bitcoin BTC$74,852.77 has seen sharp two-way moves in the last several hours, reminding traders why leverage can hurt.\n\nThe volatility came as the market digested two uncomfortable headlines. First, Jensen Huang, CEO of Nvidia – AI bellwether and the largest stock by market cap – admitted to an affair with a woman U.S. officials believe was spying for China. Second, Secretary of State Marco Rubio said negotiations with Iran had stalled. [...] On the price chart, BTC is now stuck between the 200-day average support at around $73,150 and the 100-day average resistance at $77,430.\n\nBitcoin News\n\nRelated Assets\n\nBitcoin$74,887.03 1.24%Ethereum$2,139.22 4.31%\n\nImage 6\n\nLatest Crypto News [...] Bitcoin fell to about $73,761, its lowest level since August, before rebounding above $75,000, while ether recovered after dropping below $2,100.\n   More than $1 billion in leveraged cryptocurrency positions were liquidated in 24 hours, including $913 million in bets that prices would rise, according to CoinGlass.",
+                "score": 0.49406826
+              },
+              {
+                "title": "Crypto Market Update: Bitcoin Touches August Low Amid Nvidia Probe | INN",
+                "url": "https://investingnews.com/cryptocurrency-market-recap",
+                "source": "investingnews.com",
+                "summary": "Bitcoin price update\n Bitcoin price chart\n Ether and altcoin price update\n Today's crypto news to know\n\n### Bitcoin price update\n\nBitcoin (BTC) was priced at US$74,484.86, trading two percent lower over the past 24 hours.\n\nBitcoin price performance, November 9, 2026.\n\nChart via the Investing News Network\n\n### Ether and altcoin price update\n\n Ethereum (ETH) was priced at US$2,121.43, trading 5.2 percent lower over the last 24 hours.",
+                "score": 0.405567
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_still_missing_handle_clarify",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_still_missing_handle",
+        "difficulty": "medium",
+        "what_it_tests": "2 turns: đã có limit=5 nhưng VẪN thiếu handle → clarify xin tên tài khoản, không đoán bừa."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Lấy tweet mới nhất giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Ừ, 5 cái nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [
+          {
+            "name": "timeline",
+            "args": {
+              "screenname": "",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call clarify",
+          "extra tool call timeline"
+        ]
+      },
+      "tool_results": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "error": "HTTPError",
+            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname="
+          }
+        }
+      ]
+    }
+  ]
+}

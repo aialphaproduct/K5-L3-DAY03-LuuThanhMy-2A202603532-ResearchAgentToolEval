@@ -142,3 +142,33 @@ Lỗi đặc thù của model nhỏ (đếm từ run JSON):
 - Cái gì giúp model nhỏ gọi tool đúng hơn nhất? Bằng chứng?
 - Bản prompt tối ưu cho local chạy trên model cloud thì sao?
 - Khi nào nhóm sẽ chọn model local thay vì cloud cho agent này?
+
+---
+
+# PHẦN C — Đóng góp bổ sung (Lưu Thanh Mỹ)
+
+Phần này gộp thêm vào bản nhóm (giữ nguyên prompt/tool nhóm đã đạt base 1.0).
+
+## C1. 4 tool bổ sung
+`calc` (số học cục bộ an toàn), `datetime` (giờ hiện tại theo múi giờ IANA),
+`wiki` (tóm tắt Wikipedia 1 trang), `define` (nghĩa 1 từ, dictionaryapi.dev).
+Đủ `tool.py` + `TOOL.md` + đăng ký `tools/__init__.py` + khai báo `tools.yaml`.
+→ Tổng cộng team có **8 tool mới** (4 của nhóm + 4 ở đây) ⇒ đủ điều kiện điểm thưởng ">3 tool mới".
+
+## C2. Unit test
+`tests/test_new_tools.py` (12 test cho 4 tool trên) + đã điền toàn bộ stub TODO
+trong `tests/test_tools_todo.py`. Mỗi tool mới có happy path / input xấu / nhánh lỗi.
+
+## C3. Eval nhóm (bổ sung)
+Thêm 10 case (prefix `LTM_`) vào `data/eval_group.json` — 5 single + 5 multi,
+có case route tới calc/datetime/wiki/define. (Tổng group hiện 20 case.)
+
+## C4. UI mở rộng + Telegram
+- `app.py` (Streamlit chat) + **`pages/1_Admin.py`** — trang Admin: quản trị tin
+  nhắn Telegram/chat, log luồng chạy tool, log test eval (đọc transcripts/ + runs/).
+- `telegram_bot.py` — bot Telegram HAI CHIỀU (long-polling), reply lại trong Telegram.
+- Deploy: Cloudflare Tunnel (`cloudflared tunnel --url http://localhost:8501`), trang Admin ở `/Admin`.
+
+## C5. Dòng tối ưu riêng (tham khảo)
+Trong `version_log.csv`: `v2-LTM` (viết lại mô tả tool → 0.95), `v3-LTM`/`v4-LTM`
+(rule confirm yes_no). Bản nhóm v3 (1.0) vẫn là bản chính được dùng.

@@ -21,6 +21,11 @@ from .social_search.tool import search_tweets
 from .send.tool import send_telegram
 from .lookup.tool import web_search
 from .wiki_search.tool import wiki_lookup
+# --- Team-added tools (Lưu Thanh Mỹ) ---
+from .calc.tool import calculate
+from .datetime_tool.tool import current_datetime
+from .wiki.tool import wiki_summary
+from .define.tool import define_word
 
 
 # NOTE (starter_v0): tool names here are intentionally vague. These keys are the
@@ -44,6 +49,11 @@ TOOL_FUNCTIONS = {
     "wiki_search": wiki_lookup,
     "repo_search": repo_search,
     "notes": notes_tool,
+    # --- Team-added tools (Lưu Thanh Mỹ) ---
+    "calc": calculate,
+    "datetime": current_datetime,
+    "wiki": wiki_summary,
+    "define": define_word,
 }
 
 

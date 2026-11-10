@@ -216,3 +216,52 @@ tools:
         title: {type: string, default: "", description: "Tiêu đề ngắn, tuỳ chọn, cho action=save"}
         limit: {type: integer, default: 10, description: "Số ghi chú trả về khi action=list"}
       required: [action]
+
+  # ---------------- Team-added tools (Lưu Thanh Mỹ) ----------------
+  - name: calc
+    description: >-
+      Tính một biểu thức SỐ HỌC cơ bản (+ - * / // % ** và ngoặc) trên các con
+      số cụ thể, chạy cục bộ. DÙNG khi người dùng yêu cầu một phép tính số rõ
+      ràng (vd '12*(3+4)', '15% của 200'). KHÔNG DÙNG cho giải tích/đại số ký
+      hiệu (nguyên hàm, đạo hàm, giải phương trình chữ) hay câu hỏi nghiên cứu.
+    parameters:
+      type: object
+      properties:
+        expression: {type: string, default: "", description: "Biểu thức số học, vd '2+3*4'. Chỉ số và toán tử, không có chữ/hàm."}
+      required: [expression]
+
+  - name: datetime
+    description: >-
+      Lấy NGÀY GIỜ HIỆN TẠI theo múi giờ IANA, chạy cục bộ. DÙNG khi người dùng
+      hỏi 'bây giờ mấy giờ', 'hôm nay ngày mấy', 'thứ mấy'. KHÔNG DÙNG để tra sự
+      kiện quá khứ/tương lai hay tin tức theo ngày (dùng lookup với timeframe).
+    parameters:
+      type: object
+      properties:
+        timezone: {type: string, default: "UTC", description: "Tên múi giờ IANA, vd 'Asia/Ho_Chi_Minh', 'UTC'."}
+        fmt: {type: string, default: "iso", description: "'iso' hoặc chuỗi strftime như '%Y-%m-%d %H:%M'."}
+      required: []
+
+  - name: wiki
+    description: >-
+      Tra TÓM TẮT BÁCH KHOA (Wikipedia REST, trả summary + url) cho một khái
+      niệm/thực thể. DÙNG cho kiến thức nền 'X là gì'. KHÔNG DÙNG cho tin tức
+      (lookup) hay đọc URL cụ thể (fetch). (Khác wiki_search: wiki trả tóm tắt 1 trang.)
+    parameters:
+      type: object
+      properties:
+        title: {type: string, default: "", description: "Tên khái niệm/thực thể cần tra, vd 'Transformer (machine learning)'."}
+        sentences: {type: integer, default: 3, description: "Số câu tóm tắt tối đa."}
+      required: [title]
+
+  - name: define
+    description: >-
+      Tra NGHĨA của một TỪ (mặc định tiếng Anh) qua từ điển dictionaryapi.dev.
+      DÙNG khi người dùng hỏi nghĩa/định nghĩa của một từ đơn ('define serendipity').
+      KHÔNG DÙNG để giới thiệu khái niệm dài (wiki) hay tra tin tức (lookup).
+    parameters:
+      type: object
+      properties:
+        word: {type: string, default: "", description: "Từ cần tra nghĩa."}
+        lang: {type: string, default: "en", description: "Mã ngôn ngữ, vd 'en'."}
+      required: [word]
