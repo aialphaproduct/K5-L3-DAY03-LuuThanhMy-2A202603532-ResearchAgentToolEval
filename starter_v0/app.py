@@ -28,6 +28,7 @@ st.set_page_config(page_title="Research Agent - Day03", page_icon="🔍", layout
 
 ARTIFACTS_DIR = ROOT / "artifacts"
 PROMPT_CHOICES = {
+    "v3": ARTIFACTS_DIR / "system_prompt_v3.md",
     "v2": ARTIFACTS_DIR / "system_prompt_v2.md",
     "v1": ARTIFACTS_DIR / "system_prompt_v1.md",
     "v0": ARTIFACTS_DIR / "system_prompt_v0.md",
